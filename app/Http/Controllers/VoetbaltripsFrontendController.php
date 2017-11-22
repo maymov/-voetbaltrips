@@ -927,6 +927,13 @@ class VoetbaltripsFrontendController extends JoshController
             }
         } else {
             //initial page loading
+
+            //if home club is Everton or Liverpool
+            //finding airports from Manchester and Liverpool
+            if ($match->home_club == 10 ||  $match->home_club == 13) {
+                $airports_in_city = $airports_in_city->merge([6, 11])->unique()->toArray();
+            }
+
             if ($match->fixed_data == 0) {
 //                $outgoing_flight->where("arrive_date", $cart_flight['date_flight_dep'])
                 $outgoing_flight->where("arrive_date", $date_before_match)

@@ -55,9 +55,7 @@
 <?php $subtotal        = 0; ?>
 <?php
     $subtotalBedragPP  = 0;
-    if (isset($hotel->price)) {
-        $subtotalBedragPP += $hotel->price;
-    }
+
     if (isset($match->price)) {
         $subtotalBedragPP += $match->price;
     }
@@ -67,11 +65,19 @@
     if (isset($flight[0]->price)) {
         $subtotalBedragPP += $flight[1]->price;
     }
-    if (isset($hotel->quantity)) {
-        $totalBedrag = $subtotalBedragPP * $hotel->quantity;
-    } else {
-        $totalBedrag = $subtotalBedragPP;
+    if (isset($options)) {
+        foreach($options as $option) {
+            $subtotalBedragPP += $option->price;
+        }
     }
+    if (isset($hotel->price)) {
+        if ($hotel->include_breakfast == 'yes') {
+            $subtotalBedragPP += $hotel->breakfast_price * $hotel->rooms_days;
+        }
+        $subtotalBedragPP += $hotel->price * $hotel->rooms_days;
+    }
+
+    $totalBedrag = $subtotalBedragPP * $quantity;
 
     $subtotalBedragPP  = floatval($subtotalBedragPP);
     $totalBedrag       = floatval($totalBedrag);
@@ -104,7 +110,10 @@
         <tr align="left">
             <td style="border-bottom: 1px solid lightgrey">{{$hotel->hotel_name}}</td>
         </tr>
-        <?php $subtotal += $hotel->quantity * $hotel->price; ?>
+        <?php $subtotal += $hotel->quantity * $hotel->price * $hotel->rooms_days; ?>
+        <?php if ($hotel->include_breakfast == 'yes') {
+            $subtotal += $hotel->breakfast_price * $hotel->rooms_days;
+        } ?>
     @endif
     @if(isset($flight))
         @foreach($flight as $flight)

@@ -381,15 +381,16 @@ class CartController extends Controller
             }
         }
         $content['total'] = "&euro;".$order->order_total;
+        $content['quantity'] = $order->getMatchesOrder->quantity;
 
-//dd($order);
+//dd($content);
 //	return \PDF::loadView('pdf.invoice', $content)->stream();
 	$pdfInvoice = \PDF::loadView('pdf.invoice', $content);
 
 
         \Mail::send('admin.mails.blades.total', ['content' => $content], function ($message) use ($m, $pdfInvoice){
             $message->to($m['to'])->subject($m['title']);
-	    $message->bcc("info@voetbaltrips.com");
+	        $message->bcc("info@voetbaltrips.com");
             $message->attachData($pdfInvoice->output(), "invoice.pdf");
         });
         return redirect(url("my-orders"))->with('mail', 'success');

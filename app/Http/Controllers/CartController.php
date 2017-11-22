@@ -393,8 +393,9 @@ class CartController extends Controller
 	        $message->bcc("info@voetbaltrips.com");
             $message->attachData($pdfInvoice->output(), "invoice.pdf");
         });
+
         return redirect(url("my-orders"))->with('mail', 'success');
-    }else{
+    } else {
             echo "payment failed. Error code: 3001";
         }
 

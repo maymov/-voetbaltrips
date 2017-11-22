@@ -55,8 +55,24 @@
 <?php $subtotal        = 0; ?>
 <?php
     $subtotalBedragPP  = 0;
-    $subtotalBedragPP += $hotel->price + $match->price + $flight[0]->price + $flight[1]->price;
-    $totalBedrag       = $subtotalBedragPP * $hotel->quantity;
+    if (isset($hotel->price)) {
+        $subtotalBedragPP += $hotel->price;
+    }
+    if (isset($match->price)) {
+        $subtotalBedragPP += $match->price;
+    }
+    if (isset($flight[0]->price)) {
+        $subtotalBedragPP += $flight[0]->price;
+    }
+    if (isset($flight[0]->price)) {
+        $subtotalBedragPP += $flight[1]->price;
+    }
+    if (isset($hotel->quantity)) {
+        $totalBedrag = $subtotalBedragPP * $hotel->quantity;
+    } else {
+        $totalBedrag = $subtotalBedragPP;
+    }
+
     $subtotalBedragPP  = floatval($subtotalBedragPP);
     $totalBedrag       = floatval($totalBedrag);
 ?>

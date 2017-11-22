@@ -1,5 +1,4 @@
 # Voetbaltrips
-http://voetbaltrips.nl
 
 
 # Start building

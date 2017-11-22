@@ -380,8 +380,10 @@ class CartController extends Controller
                 $content['message'] = $trans->text;
             }
         }
-        $content['total'] = "&euro;".$order->order_total ;
+        $content['total'] = "&euro;".$order->order_total;
 
+//dd($order);
+//	return \PDF::loadView('pdf.invoice', $content)->stream();
 	$pdfInvoice = \PDF::loadView('pdf.invoice', $content);
 
 

@@ -13,7 +13,7 @@
     <tbody>
         <tr>
             <th>
-                {{ $full_name }}
+                {{--{{ $full_name }}--}}
             </th>
             <td rowspan="3" align="right">
                 <img style="height: 100px" src="{{asset('assets/images/facebook-cover2.png')}}">
@@ -21,12 +21,12 @@
         </tr>
         <tr>
             <td>
-                {{$address}}
+                {{--{{$address}}--}}
             </td>
         </tr>
         <tr>
             <td>
-                {{$postal}} {{$city}}
+                {{--{{$postal}} {{$city}}--}}
             </td>
         </tr>
     </tbody>
@@ -83,20 +83,28 @@
         <th style="border-bottom: 1px solid lightgrey; text-align: center;">Bedrag p.p.</th>
         <th style="border-bottom: 1px solid lightgrey; text-align: center;">Totaal</th>
     </tr>
-    @if(isset($hotel))
+    @if(isset($match) && isset($hotel) && isset($flight))
         <tr align="left">
-            <td style="border-bottom: 1px solid lightgrey">{{$hotel->hotel_name}}</td>
-            <td rowspan="4" style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold">{{$hotel->quantity}}</td>
+            <td style="border-bottom: 1px solid lightgrey">{{$match->home_club}} - {{$match->away_club}}</td>
+            <td rowspan="4" style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold">{{$match->quantity}}</td>
             <td rowspan="4" style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold"><?php echo "&euro;".$subtotalBedragPP ?></td>
             <td rowspan="4" style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold"><?php echo "&euro;".$totalBedrag ?></td>
         </tr>
-        <?php $subtotal += $hotel->quantity * $hotel->price; ?>
-    @endif
-    @if(isset($match))
+        <?php $subtotal += $match->quantity * $match->price; ?>
+    @elseif(isset($match))
         <tr align="left">
             <td style="border-bottom: 1px solid lightgrey">{{$match->home_club}} - {{$match->away_club}}</td>
+            <td style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold">{{$match->quantity}}</td>
+            <td style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold"></td>
+            <td style="border-bottom: 1px solid lightgrey; text-align: center; font-weight: bold">{{$total}}</td>
         </tr>
-        <?php $subtotal += $match->quantity * $match->price; ?>
+        <?php $subtotal += $total; ?>
+    @endif
+    @if(isset($hotel))
+        <tr align="left">
+            <td style="border-bottom: 1px solid lightgrey">{{$hotel->hotel_name}}</td>
+        </tr>
+        <?php $subtotal += $hotel->quantity * $hotel->price; ?>
     @endif
     @if(isset($flight))
         @foreach($flight as $flight)
@@ -126,7 +134,7 @@
     <tr align="left">
         <td></td>
         <td></td>
-        <td><?php echo "&euro;".$subtotal; ?></td>
+        <td><?php if ($subtotal == 0) {$subtotal = $total;}else {$subtotal ="&euro;".$subtotal;} echo $subtotal; ?></td>
         <td>{{$total}}</td>
     </tr>
 

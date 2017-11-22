@@ -822,7 +822,8 @@ class VoetbaltripsFrontendController extends JoshController
             $time_after_match   = date('H:i:s', strtotime($match->match_date . ' + 6 hour'));
             $match_end_date     = date('Y-m-d', strtotime($match->match_date . ' + 6 hour'));
         } elseif ($match->fixed_data == 0) {
-            $time_before_match  = date('Y-m-d', strtotime($match->match_date . ' - 15 hour'));
+            $date_before_match  = date('Y-m-d', strtotime($match->match_date . ' - 6 hour'));
+            $time_before_match  = date('H:i:s', strtotime($match->match_date . ' - 3 hour'));
             $time_after_match   = date('H:i:s', strtotime($match->match_date . ' + 36 hour'));
             $match_end_date     = date('Y-m-d', strtotime($match->match_date . ' + 2 day'));
         }
@@ -836,7 +837,7 @@ class VoetbaltripsFrontendController extends JoshController
 
         session()->set('min_flight_arr', $out_min_price);
         session()->set('min_flight_dep', $ret_min_price);
-
+//var_dump($match->match_date, $time_before_match);
         if ($request->input('airports') != '') {
             $req_airports = explode(',', $request->input('airports'));
         }
@@ -928,10 +929,10 @@ class VoetbaltripsFrontendController extends JoshController
             //initial page loading
             if ($match->fixed_data == 0) {
 //                $outgoing_flight->where("arrive_date", $cart_flight['date_flight_dep'])
-                $outgoing_flight->where("arrive_date", $time_before_match)
+                $outgoing_flight->where("arrive_date", $date_before_match)
                                 ->whereIn("to", $airports_in_city)
                                 ->whereIn("from", $req_airports);
-                if ($cart_flight['date_flight_dep'] ==  $match_date) {
+                if ($date_before_match ==  $match_date) {
                     $outgoing_flight->where("arrive_time", "<=", $time_before_match);
                 }
 //                $return_flight->where("arrive_date", $cart_flight['date_flight_arr'])

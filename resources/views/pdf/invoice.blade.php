@@ -13,7 +13,7 @@
     <tbody>
         <tr>
             <th>
-                {{--{{ $full_name }}--}}
+                {{ $full_name }}
             </th>
             <td rowspan="3" align="right">
                 <img style="height: 100px" src="{{asset('assets/images/facebook-cover2.png')}}">
@@ -21,12 +21,12 @@
         </tr>
         <tr>
             <td>
-                {{--{{$address}}--}}
+                {{$address}}
             </td>
         </tr>
         <tr>
             <td>
-                {{--{{$postal}} {{$city}}--}}
+                {{$postal}} {{$city}}
             </td>
         </tr>
     </tbody>

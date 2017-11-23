@@ -81,11 +81,11 @@ Calendar
                 ini_events($('#external-events div.external-event'));
 
                 var event, matches = [];
-
+                var match_date = <?php echo $match->match_date; ?>
                     <?php foreach($matches as $match) {?>
                         event: {
                             title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
-                            start: new Date(<?php echo "'" . $match->match_date . "'"; ?>
+                            start: new Date(match_date)
                         };
                         matches.push(event);
                     <?php }?>

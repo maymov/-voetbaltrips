@@ -366,6 +366,18 @@ class JoshController extends Controller {
         }
     }
 
+
+    public function calendar($name=null)
+    {
+		if(Sentinel::check()) {
+			$matches = Match::with('getHomeClub')->with('getAwayClub')->whereDate("match_date", ">=", date('Y-m-d H:i:s'))->get();
+			return View('admin/'.$name)->with('matches', $matches);
+		}
+		else {
+			return Redirect::to('admin/signin')->with('error', 'You must be logged in!');
+		}
+}
+
     public function soldMatches() 
     {
     	if(!Sentinel::check())

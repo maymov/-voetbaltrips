@@ -165,6 +165,10 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
     Route::get('task/data', 'TaskController@data');
     Route::post('task/{task}/edit', 'TaskController@update');
     Route::post('task/{task}/delete', 'TaskController@delete');
+
+
+    Route::get('calendar', 'JoshController@calendar');
+
     /**
      * Uploading the flight csv data
      */

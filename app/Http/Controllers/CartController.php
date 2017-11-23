@@ -71,7 +71,7 @@ class CartController extends Controller
             $cart_data['options'] = $cart_options;
             $opt_tot              = 0;
             foreach ($cart_options as $opt) {
-                $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                $opt_tot = ($opt_tot + ($opt['cost']));
             }
             $total = ($total+$opt_tot);
         }
@@ -219,9 +219,9 @@ class CartController extends Controller
                         "title"       => $option->title,
                         "description" => $option->description,
                         "price"       => addAdditionalPrice($option->price),
-                        "quantity"    => $opt['qty']
+                        "cost"        => $opt['cost']
                     ]);
-                    $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                    $opt_tot = ($opt_tot + ($opt['cost']));
                 }
             }
             $total_amount = ((addAdditionalPrice($seating->price) * $quantity) + ((addAdditionalPrice($dept_flight->price) * $quantity)) + ((addAdditionalPrice($return_flight->price) * $quantity)) + $room_total + $opt_tot);

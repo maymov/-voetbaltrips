@@ -1166,12 +1166,13 @@ class VoetbaltripsFrontendController extends JoshController
             }
             $total = ($total + ($room_total * $room_array['room_days']));
         }
+//        dd($request->session()->get("cart_options"));
         if ($request->session()->has("cart_options")) {
             $cart_options         = $request->session()->get("cart_options");
             $cart_data['options'] = $cart_options;
             $opt_tot              = 0;
             foreach ($cart_options as $opt) {
-                $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                $opt_tot = ($opt_tot + ($opt['cost']));
             }
             $total = ($total+$opt_tot);
         }
@@ -1405,13 +1406,17 @@ class VoetbaltripsFrontendController extends JoshController
             $cartshow     = "yes";
             $cart_options = $request->session()->get("cart_options");
         }
-        $match = Match::findorFail($match_id);
+        $match   = Match::findorFail($match_id);
         $options = Option::get();
+        $quantity = $request->session()->get('cart_quantity');
+//        dd();
+
         return View('voetbaltrips_frontend.options', [
             "match"        => $match,
             "options"      => $options,
             "match_id"     => $match_id,
             "cart_show"    => $cartshow,
+            "quantity"     => $quantity,
             "cart_options" => $cart_options
         ]);
     }
@@ -1425,7 +1430,7 @@ class VoetbaltripsFrontendController extends JoshController
         $response['status']  = "error";
         $response['message'] = Translater::getValue('modal-message-something-went-wrong');
         $rules = [
-            "qty"      => "required",
+            "cost"     => "required",
             "identity" => "required"
         ];
         $validate = Validator::make($request->all(), $rules);
@@ -1445,13 +1450,13 @@ class VoetbaltripsFrontendController extends JoshController
                         "name"   => $opt->title,
                         "price"  => addAdditionalPrice($opt->price),
                         "opt_id" => $request->input("identity"),
-                        "qty"    => $request->input("qty"),
+                        "cost"    => $request->input("cost"),
                     ];
                 } else {
                     /**
                      * The cart item is exist
                      */
-                    $cart[$check_cart]['qty'] = $request->input("qty");
+                    $cart[$check_cart]['cost'] = $request->input("cost");
                     $response['message'] = Translater::getValue('modal-message-you-have-successfully-updated') ." ".$opt->title." ". Translater::getValue('modal-message-cart-quantity');
 
                 }
@@ -1461,7 +1466,7 @@ class VoetbaltripsFrontendController extends JoshController
                     "name"   => $opt->title,
                     "price"  => addAdditionalPrice($opt->price),
                     "opt_id" => $request->input("identity"),
-                    "qty"    => $request->input("qty"),
+                    "cost"    => $request->input("cost"),
                 ];
                 $request->session()->put("cart_options", $cart_array);
             }
@@ -1613,7 +1618,7 @@ class VoetbaltripsFrontendController extends JoshController
             $cart_options         = $request->session()->get("cart_options");
             $cart_data['options'] = $cart_options;
             foreach ($cart_options as $opt) {
-                $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                $opt_tot = ($opt_tot + ($opt['cost']));
             }
             $total = ($total+$opt_tot);
         }

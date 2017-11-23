@@ -62,7 +62,7 @@
     if (isset($flight[0]->price)) {
         $subtotalBedragPP += $flight[0]->price;
     }
-    if (isset($flight[0]->price)) {
+    if (isset($flight[1]->price)) {
         $subtotalBedragPP += $flight[1]->price;
     }
     if (isset($options)) {
@@ -125,7 +125,7 @@
     @endif
     @if(isset($options))
         @foreach($options as $option)
-            <?php $subtotal += $option->quantity * $option->price; ?>
+            <?php $subtotal += $quantity * $option->price; ?>
         @endforeach
     @endif
     <tr>

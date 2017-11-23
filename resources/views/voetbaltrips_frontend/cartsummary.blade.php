@@ -216,10 +216,14 @@
                                             <h4>{{Translater::getValue('title-extra-options-selected')}}</h4>
                                             @foreach($cart_data['options'] as $opt)
                                                 <div class="panel panel-default" id="options_{{$opt['opt_id']}}">
-                                                    <div class="panel-body"><span class="option-title">{{ $opt['name'] }}</span>
+                                                    <div class="panel-body">
+                                                        <input type="radio" class="addoption" data-know="{{$opt['opt_id']}}" id="txt_{{$opt['opt_id']}} value="{{$opt['cost']}}" checked>
+                                                        <span class="option-title">{{ $opt['name'] }}</span>
                                                         <div class="pull-right text-right">
-                                                            &euro; {{ $opt['price'] }}/{{Translater::getValue('form-label-per-person')}} &nbsp;<input type="number" name="quantity" class="number_only" id="txt_{{$opt['opt_id']}}" min="1" value="{{$opt['qty']}}">
-                                                            <button class="btn btn-primary updateoption" data-know="{{$opt['opt_id']}}"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;{{Translater::getValue('button-update')}}</button>
+                                                            &euro; {{ $opt['price'] }}/{{Translater::getValue('form-label-per-person')}} &nbsp;
+                                                                Total: &euro; {{$opt['price'] * $cart_data['quantity']}}
+                                                            {{--<input type="number" name="quantity" class="number_only" id="txt_{{$opt['opt_id']}}" min="1" value="{{$opt['qty']}}">--}}
+                                                            {{--<button class="btn btn-primary updateoption" data-know="{{$opt['opt_id']}}"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;{{Translater::getValue('button-update')}}</button>--}}
                                                             <button class="btn btn-primary removeoption" data-know="{{$opt['opt_id']}}"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;{{Translater::getValue('button-remove')}}</button>
                                                         </div>
                                                     </div>

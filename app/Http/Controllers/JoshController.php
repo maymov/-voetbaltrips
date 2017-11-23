@@ -371,7 +371,7 @@ class JoshController extends Controller {
     {
 		if(Sentinel::check()) {
 			$matches = Match::with('getHomeClub')->with('getAwayClub')->whereDate("match_date", ">=", date('Y-m-d H:i:s'))->get();
-			return View('admin/'.$name)->with('matches', $matches);
+			return View('admin/calendar')->with('matches', $matches);
 		}
 		else {
 			return Redirect::to('admin/signin')->with('error', 'You must be logged in!');

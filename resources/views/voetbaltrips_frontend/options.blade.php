@@ -28,11 +28,18 @@
                                 ?>
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <input type="radio" class="addoption" data-know="{{$opt->id}}" id="txt_{{$opt->id}}" value="{{$opt->price * $quantity}}" {{$cart_val > 0 ? 'checked' : ''}}>
-                                    <span class="option-title" data-toggle="popover" title="{{$opt->title}}" animation="true" data-placement="top" data-trigger="hover" data-toggle="popover" data-html=true data-content="{{$opt->description}}">
-                                        {{ $opt->title }}
-                                    </span>
-                                    <div class="pull-right text-right">
+                                    <div class="col-md-3">
+                                        <input type="radio" class="addoption" data-know="{{$opt->id}}" id="txt_{{$opt->id}}" value="{{$opt->price * $quantity}}" {{$cart_val > 0 ? 'checked' : ''}}>
+                                        <span class="option-title" data-toggle="popover" title="{{$opt->title}}" animation="true" data-placement="top" data-trigger="hover" data-toggle="popover" data-html=true data-content="{{$opt->description}}">
+                                            {{ $opt->title }}
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span>
+                                            {{$opt->description}}
+                                        </span>
+                                    </div>
+                                    <div class="pull-right text-right col-md-3">
                                         <span class="option-price">
                                             &euro; {{ addAdditionalPrice($opt->price) }}/ {{Translater::getValue('form-label-per-person')."."}}
                                         </span>

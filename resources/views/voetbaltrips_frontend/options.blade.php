@@ -32,6 +32,7 @@
                                     <span class="option-title" data-toggle="popover" title="{{$opt->title}}" animation="true" data-placement="top" data-trigger="hover" data-toggle="popover" data-html=true data-content="{{$opt->description}}">
                                         {{ $opt->title }}
                                     </span>
+                                    <span>{{$opt->description}}</span>
                                     <div class="pull-right text-right">
                                         <span class="option-price">
                                             &euro; {{ addAdditionalPrice($opt->price) }}/ {{Translater::getValue('form-label-per-person')."."}}

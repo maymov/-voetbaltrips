@@ -84,8 +84,8 @@ Calendar
                 var match_date = "";
 
                     <?php foreach($matches as $match) {?>
-                        match_date = <?php echo $match->match_date; ?>;
-                        
+                        match_date = '"' + <?php echo $match->match_date; ?> + '"';
+
                         event: {
                             title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
                             start: new Date(match_date)

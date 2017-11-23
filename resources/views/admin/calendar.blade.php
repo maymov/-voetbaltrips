@@ -56,6 +56,10 @@ Calendar
             <script>
 
         $(document).ready(function() {
+    var date = new Date();
+    var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear();
 
             function ini_events(ele) {
                 ele.each(function() {
@@ -80,36 +84,32 @@ Calendar
             }
                 ini_events($('#external-events div.external-event'));
 
-                var event, matches = [];
-                var match_date = "";
-
-                    <?php foreach($matches as $match) {?>
-                        match_date = '"' + <?php echo $match->match_date; ?> + '"';
-
-                        event: {
-                            title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
-                            start: new Date(match_date)
-                        };
-                        matches.push(event);
-                    <?php }?>
-
-
-                /* initialize the calendar
-                 -----------------------------------------------------------------*/
-                //Date for the calendar events (dummy data)
-                var date = new Date();
-                var d = date.getDate(),
-                    m = date.getMonth(),
-                    y = date.getFullYear();
                 $('#calendar').fullCalendar({
                     header: {
                         left: 'prev,next today',
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    events: matches,
+                    events: [
+                    <?php foreach($matches as $match) {?>
+                         {
+                            title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
+                            start: new Date("<?php echo $match->match_date; ?>"),
+                            url: 'http://booking.voetbaltrips.com/admin/matches/<?php echo $match->id; ?>',
+                            backgroundColor: "#418BCA"
+                        },
+                    <?php }?>
+                    ],
                     editable: false,
                     droppable: false, 
+                    contentHeight: "auto",
+                    height: "auto",
+                    eventClick: function(event) {
+                        if (event.url) {
+                            window.open(event.url);
+                            return false;
+                        }
+                    }
                 });
             });
     </script>

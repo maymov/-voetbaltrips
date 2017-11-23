@@ -1,8 +1,8 @@
-@extends('layouts/default')
+@extends('admin/layouts/default')
 
 {{-- Page title --}}
 @section('title')
-Home
+Calendar
 @parent
 @stop
 

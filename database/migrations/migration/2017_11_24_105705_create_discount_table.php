@@ -19,7 +19,7 @@ class CreateDiscountTable extends Migration
             $table->boolean("is_used")->default(false);
             $table->timestamps();
             $table->softDeletes();
-            $table->index('name');
+            $table->index('code');
         });
     }
 

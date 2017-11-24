@@ -22,6 +22,7 @@ use App\TravellerInfo;
 use Illuminate\Support\Facades\File;
 use App\OrdersOptions;
 use App\Mails;
+use App\Discount;
 
 class CartController extends Controller
 {
@@ -71,9 +72,30 @@ class CartController extends Controller
             $cart_data['options'] = $cart_options;
             $opt_tot              = 0;
             foreach ($cart_options as $opt) {
-                $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                $opt_tot = ($opt_tot + ($opt['cost']));
             }
             $total = ($total+$opt_tot);
+        }
+        if($request->session()->has("coupon_code")) {
+            $cart_data['coupon_wrong'] = false;
+            $code = $request->session()->get("coupon_code");
+            $coupon = Discount::where('is_used', 0)
+                ->where('code', $code)
+                ->first();
+            if ($coupon) {
+                $request->session()->set("coupon_value", $coupon->value);
+                $cart_data['coupon_code'] = $code;
+                $coupon->is_used = 1;
+                $total -= $coupon->value;
+
+                $coupon->save();
+            } else {
+                $cart_data['coupon_code'] = null;
+                $cart_data['coupon_wrong'] = true;
+                $request->session()->set("coupon_value", null);
+            }
+        } else {
+            $request->session()->set("coupon_value", null);
         }
         $cart_data['total_amount']  = $total;
         $travel_info                = $request->session()->get('travelinfo');
@@ -90,6 +112,11 @@ class CartController extends Controller
         /**
          * Creating the order
          */
+        if($request->session()->has("coupon_value")) {
+            $coupon = $request->session()->get('coupon_value');
+        } else {
+            $coupon = null;
+        }
 
         $order = Order::create([
             "users_id"          => $this->user->id,
@@ -219,9 +246,9 @@ class CartController extends Controller
                         "title"       => $option->title,
                         "description" => $option->description,
                         "price"       => addAdditionalPrice($option->price),
-                        "quantity"    => $opt['qty']
+                        "cost"        => $opt['cost']
                     ]);
-                    $opt_tot = ($opt_tot + ($opt['price'] * $opt['qty']));
+                    $opt_tot = ($opt_tot + ($opt['cost']));
                 }
             }
             $total_amount = ((addAdditionalPrice($seating->price) * $quantity) + ((addAdditionalPrice($dept_flight->price) * $quantity)) + ((addAdditionalPrice($return_flight->price) * $quantity)) + $room_total + $opt_tot);
@@ -232,6 +259,9 @@ class CartController extends Controller
         /**
          * Update the total price in orders table
          */
+        if ($coupon != null && is_numeric($coupon)) {
+            $total_amount -= $coupon;
+        }
 
         $order->order_total = $total_amount;
         $order->save();
@@ -382,7 +412,12 @@ class CartController extends Controller
         }
         $content['total'] = "&euro;".$order->order_total;
         $content['quantity'] = $order->getMatchesOrder->quantity;
-
+            if($request->session()->has("coupon_value")) {
+                $content['coupon_value'] = $request->session()->get('coupon_value');
+            }
+            if($request->session()->has("coupon_code")) {
+                $content['coupon_code']  = $request->session()->get('coupon_code');
+            }
 //dd($content);
 //	return \PDF::loadView('pdf.invoice', $content)->stream();
 	$pdfInvoice = \PDF::loadView('pdf.invoice', $content);

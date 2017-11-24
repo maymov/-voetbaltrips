@@ -90,6 +90,8 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
     Route::get('/sold-matches', array('as' => 'sold-matches','uses' => 'JoshController@soldMatches'));
     Route::get('/sold-match/{matchId}', array('as' => 'sold-match','uses' => 'JoshController@soldMatch'));
 
+    # Discount
+    Route::resource('discount', 'DiscountController', ['except' => ['show']]);
 
     # User Management
     Route::group(array('prefix' => 'users'), function () {

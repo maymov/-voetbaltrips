@@ -5,13 +5,13 @@ $(document).ready(function () {
 	});
 	$(".addoption").click(function () {
         var identity = $(this).data("know");
-        var qty      = $("#txt_"+identity).val();
-        if(!isNaN(qty) && qty > 0) {
+        var cost     = $("#txt_"+identity).val();
+        if(!isNaN(cost) && cost > 0) {
             $.ajax({
                 url : window.location.protocol+"//"+window.location.hostname+"/addoptions",
                 data : { 
                     "_token"   : $("[name=_token]").val(),
-                    "qty"      : qty,
+                    "cost"      : cost,
                     "identity" : identity
                 },
                 method : "POST",
@@ -70,8 +70,7 @@ $(document).ready(function () {
     });
     $(".removeoption").click(function() {
         var identity = $(this).data("know");
-        var q        = $("#txt_"+identity).val();
-        if (q.length > 0) {
+
             var data = {'title': 'quest', 'page': 'delete-this-option'};
             $.ajaxSetup({
                 headers: {
@@ -132,6 +131,6 @@ $(document).ready(function () {
                     }
                 }
             });
-        }
+
     });
 });

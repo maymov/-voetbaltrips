@@ -23,15 +23,35 @@
                                     if(isset($cart_options)) {
                                         $check_cart = array_search($opt->id, array_column($cart_options, 'opt_id'));
                                         if($check_cart !== false)
-                                        $cart_val   = $cart_options[$check_cart]['qty'];
+                                        $cart_val   = $cart_options[$check_cart]['cost'];
                                     }
                                 ?>
                             <div class="panel panel-default">
-                                <div class="panel-body"><span class="option-title" data-toggle="popover" title="{{$opt->title}}" animation="true" data-placement="top" data-trigger="hover" data-toggle="popover" data-html=true data-content="{{$opt->description}}">{{ $opt->title }}</span>
-                                    <div class="pull-right text-right"><span class="option-price">&euro; {{ addAdditionalPrice($opt->price) }}/ {{Translater::getValue('form-label-per-person')}} </span>
-                                        <input type="number" name="quantity" class="number_only" id="txt_{{$opt->id}}" min="1" value="{{ $cart_val }}">
-                                        <button class="btn btn-primary addoption" data-know="{{$opt->id}}">{{Translater::getValue('button-add')}}</button>
-                                        <button class="btn btn-primary removeoption" data-know="{{$opt->id}}"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;{{Translater::getValue('button-remove')}}</button>
+                                <div class="panel-body">
+                                    <div class="col-md-3">
+                                        <input type="radio" class="addoption" data-know="{{$opt->id}}" id="txt_{{$opt->id}}" value="{{$opt->price * $quantity}}" {{$cart_val > 0 ? 'checked' : ''}}>
+                                        <span class="option-title" data-toggle="popover" title="{{$opt->title}}" animation="true" data-placement="top" data-trigger="hover" data-toggle="popover" data-html=true data-content="{{$opt->description}}">
+                                            {{ $opt->title }}
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span>
+                                            {{$opt->description}}
+                                        </span>
+                                    </div>
+                                    <div class="pull-right text-right col-md-3">
+                                        <span class="option-price">
+                                            &euro; {{ addAdditionalPrice($opt->price) }}/ {{Translater::getValue('form-label-per-person')."."}}
+                                        </span>
+                                        <span class="option-price">
+                                            Total: &euro; {{ addAdditionalPrice($opt->price) * $quantity }}
+                                        </span>
+                                        {{--<button class="btn btn-primary addoption" data-know="{{$opt->id}}">--}}
+                                            {{--{{Translater::getValue('button-add')}}--}}
+                                        {{--</button>--}}
+                                        {{--<button class="btn btn-primary removeoption" data-know="{{$opt->id}}">--}}
+                                            {{--<i class="fa fa-times" aria-hidden="true"></i>&nbsp;{{Translater::getValue('button-remove')}}--}}
+                                        {{--</button>--}}
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +98,7 @@
                     </div>
                     <div class="tab-pane fade" id="service-one">
                         <section class="container">
-                            {{--  Een geweldige wedstrijd--}}
+                            {{--  Een geweldige wedstrijd --}}
                             <h3>{{$match->getStadium->stadium}}</h3>
                             <p>{{Translater::getValue('form-title-about-stadium')}}:</p>
                             @foreach ($match->getStadium->getTranslate as $trans)

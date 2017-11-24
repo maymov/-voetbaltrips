@@ -58,6 +58,14 @@
                                         {{ $cart_data['quantity'] }}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 coupon">
+                                        <label for="value" class="col-sm-2 control-label">Coupon</label>
+                                        <div class="col-sm-10">
+                                            <input id="coupon_code" type="text" placeholder="" class="form-control" value="" />
+                                        </div>
+                                    </div>
+                                </div>
                                 @if(!empty($cart_data['match_id']))
                                     <div class="form-group col-sm-12 total-cost" style="margin: 10px"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></div>
                                 @endif

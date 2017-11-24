@@ -140,7 +140,14 @@
                                 @endif
                                 @if(!empty($cart_data['match_id']))
                                     <span class="form-group col-xs-12">&nbsp;</span>
-                                    <span class="form-group col-xs-12 text-right"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></span>
+                                    @if($cart_data['coupon_wrong'])
+                                        <span class="form-group col-xs-12 text-left"><b>Coupon code is wrong</b></span>
+                                    @endif
+                                    @if($cart_data['coupon_code'] != null)
+                                        <span class="form-group col-xs-12 text-right"> <h4>Total (with discount): &euro;{{ $cart_data['total_amount'] }}</h4></span>
+                                    @else
+                                        <span class="form-group col-xs-12 text-right"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></span>
+                                    @endif
                                 @endif
                             </div>
                         @endif

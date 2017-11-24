@@ -103,10 +103,14 @@ $(document).ready(function(){
         });
     });
     $("#proceedtopayment").click(function(){
+
+        var coupon_code = $('#coupon_code').val();
+
         $.ajax({
             url      : window.location.protocol + "//" + window.location.hostname + "/cart/confirm",
             method   : "GET",
             dataType : "json",
+            data: {coupon_code: coupon_code},
             success  : function (resp) {
                 if(resp.status == "success") {
                     window.location.href = window.location.protocol + "//" + window.location.hostname + "/cart/proceed";

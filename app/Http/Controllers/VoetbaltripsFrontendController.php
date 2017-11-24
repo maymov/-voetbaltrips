@@ -1638,6 +1638,7 @@ class VoetbaltripsFrontendController extends JoshController
         $response['status']  = "error";
         $response['message'] = "Unable to complete the cart";
         $cart_qty            = $request->session()->get("cart_quantity");
+        $request->session()->set("coupon_code", $request->coupon_code);
 
         if ($request->session()->get('only_ticket')) {
             $count_travellers = $cart_qty;

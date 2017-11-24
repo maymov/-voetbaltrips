@@ -134,6 +134,18 @@
     <tr>
         <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
     </tr>
+    @if(isset($coupon_code) && isset($coupon_value))
+        <tr>
+            <td>Coupon: {{$coupon_code}} <br/> Amount: {{$coupon_value}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        </tr>
+        <?php if ($subtotal == 0) {$subtotal = $total;}else {$subtotal -= $coupon_value;} ?>
+    @endif
     <tr align="left">
         <td colspan="2" style="border-bottom: 1px solid lightgrey" align="center">*Bijzondere regeling reisbureaus</td>
         <th style="border-bottom: 1px solid lightgrey">Subtotaal</th>

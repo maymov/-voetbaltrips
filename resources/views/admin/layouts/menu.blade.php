@@ -1,3 +1,27 @@
+{{--Discount--}}
+<li {!! (Request::is('admin/discount') || Request::is('admin/discount/create') || Request::is('admin/discount/*') ? 'class="active"' : '') !!}>
+    <a href="#">
+        <i class="glyphicon glyphicon-gift"></i>
+        <span class="title">Discount</span>
+        <span class="fa arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li {!! (Request::is('admin/discount') ? 'class="active" id="active"' : '') !!}>
+            <a href="{{ URL::to('admin/discount') }}">
+                <i class="fa fa-angle-double-right"></i>
+                Coupons
+            </a>
+        </li>
+        <li {!! (Request::is('admin/discount/create') ? 'class="active" id="active"' : '') !!}>
+            <a href="{{ URL::to('admin/discount/create') }}">
+                <i class="fa fa-angle-double-right"></i>
+                Add New Coupon
+            </a>
+        </li>
+    </ul>
+</li>
+{{--End Discount--}}
+
 <li {!! (Request::is('admin/competition_seatings') || Request::is('admin/competition_seatings/create') || Request::is('admin/competition_seatings/*') ? 'class="active"' : '') !!}>
     <a href="#">
         <i class="fa fa-ticket fa-lg"></i>

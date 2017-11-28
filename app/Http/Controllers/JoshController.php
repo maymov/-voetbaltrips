@@ -8,6 +8,7 @@ use Sentinel;
 use View;
 use DB;
 use App\Match;
+use App\Task;
 use App\OrderMatch;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -371,7 +372,10 @@ class JoshController extends Controller {
     {
 		if(Sentinel::check()) {
 			$matches = Match::with('getHomeClub')->with('getAwayClub')->whereDate("match_date", ">=", date('Y-m-d H:i:s'))->get();
-			return View('admin/calendar')->with('matches', $matches);
+
+			$tasks = Task::get();
+
+			return View('admin/calendar')->with('matches', $matches)->with('tasks', $tasks);
 		}
 		else {
 			return Redirect::to('admin/signin')->with('error', 'You must be logged in!');

@@ -11,6 +11,13 @@ use Sentinel;
 class TaskController extends Controller
 {
 
+    public function index()
+    {
+        $tasks = Task::get();
+
+        return view('admin.task.index', compact('tasks'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -22,7 +29,7 @@ class TaskController extends Controller
         $task = new Task($request->except('_token'));
         $task->save();
 
-        return $task->id;
+        return json_encode($task);
 
     }
 
@@ -55,5 +62,12 @@ class TaskController extends Controller
     {
         return Task::where('user_id', Sentinel::getUser()->id)->select('*')->get()->toArray();
 
+    }
+
+    public function show($id)
+    {
+        $task = Task::find($id);
+
+        return view('admin.task.show', compact('task'));
     }
 }

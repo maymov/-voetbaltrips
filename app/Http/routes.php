@@ -165,6 +165,8 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
     //tasks section
     Route::post('task/create', 'TaskController@store');
     Route::get('task/data', 'TaskController@data');
+    Route::get('task/{id}', 'TaskController@show');
+    Route::get('tasks', 'TaskController@index');
     Route::post('task/{task}/edit', 'TaskController@update');
     Route::post('task/{task}/delete', 'TaskController@delete');
 

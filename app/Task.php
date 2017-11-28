@@ -17,6 +17,9 @@ class Task extends Model
      *
      * @var array
      */
+
+    protected $fillable = ['user_id', 'task_name', 'task_description', 'task_deadline'];
+
     protected $guarded = ['id'];
 
     public function setTaskDeadlineAttribute($task_deadline)

@@ -43,6 +43,50 @@ Calendar
                             <!-- /.box --> </div>
                         <!-- /.col --> </div>
                     <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        <i class="fa fa-plus"></i>
+                                        Create Event
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                         <div class="form-group">
+                                             {!! Form::label('name', 'Name: ') !!}
+                                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                         </div>
+
+
+                                        <div class="form-group">
+                                            {!! Form::label('deadLine', 'Date: ') !!}
+                                            <div class="controls input-append date form_datetime" data-date=""  data-date-format="dd MM yyyy hh:ii" data-link-field="deadLine">
+                                                    <input size="16" type="text" value="" readonly class="form-control" placeholder="Please select a Date" required="required">
+                                                    <span class="add-on"><i class="icon-remove"></i></span>
+                                                    <span class="add-on"><i class="icon-th"></i></span>
+                                                </div>
+                                                <input type="hidden" id="deadLine" name="deadLine" value="" />
+                                        </div>    
+                                        <div class="form-group">
+                                             {!! Form::label('description', 'Description: ') !!}
+                                             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                                         </div>
+                                    <!-- /input-group --> </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger pull-right"  data-dismiss="modal">
+                                        Close
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success pull-left" id="add-new-event" data-dismiss="modal">
+                                        <i class="fa fa-plus"></i>
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 @stop
@@ -56,32 +100,52 @@ Calendar
             <script>
 
         $(document).ready(function() {
-    var date = new Date();
-    var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
+
+    $('.form_datetime').datetimepicker({
+        language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 0,
+        forceParse: 0
+    });
 
             function ini_events(ele) {
                 ele.each(function() {
-
-                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                    // it doesn't need to have a start or end
                     var eventObject = {
                         title: $.trim($(this).text()) // use the element's text as the event title
                     };
-
-                    // store the Event Object in the DOM element so we can get to it later
                     $(this).data('eventObject', eventObject);
-
-                    // make the event draggable using jQuery UI
-                    //$(this).draggable({
-                      //  zIndex: 1070,
-                        //revert: true, // will cause the event to go back to its
-                        //revertDuration: 0 //  original position after the drag
-                    //});//
 
                 });
             }
+
+            $( "#add-new-event" ).click(function() {    
+                var name = $('#name').val();
+                var decription = $('#description').val();
+                var deadLine = $('#deadLine').val();
+
+
+                $.ajax({
+                    url      : "task/create",
+                    method   : "POST",
+                    dataType : "json",
+                    data     :{ task_name: name, task_description: description, task_deadline: deadLine},
+                    error: function (request, status, error) {
+                        console.log(request.responseText);
+                    }, 
+                    success  : function (resp) { 
+                        console.log(resp);
+                    }
+                });
+            });
+
+            function setDate(date) {
+                $(".form_datetime").datetimepicker("setDate", new Date(date.format()));
+            }
+
                 ini_events($('#external-events div.external-event'));
 
                 $('#calendar').fullCalendar({
@@ -95,7 +159,7 @@ Calendar
                          {
                             title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
                             start: new Date("<?php echo $match->match_date; ?>"),
-                            url: 'http://booking.voetbaltrips.com/admin/matches/<?php echo $match->id; ?>',
+                            url: '/admin/matches/<?php echo $match->id; ?>',
                             backgroundColor: "#418BCA"
                         },
                     <?php }?>
@@ -109,6 +173,20 @@ Calendar
                             window.open(event.url);
                             return false;
                         }
+                    },    
+                    dayClick: function(date, jsEvent, view) {
+                        $('#myModal').modal('show');
+                        setDate(date);
+
+                        //alert('Clicked on: ' + date.format());
+
+                        //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+                        //alert('Current view: ' + view.name);
+
+                        // change the day's background color just for fun
+                        //$(this).css('background-color', 'red');
+
                     }
                 });
             });

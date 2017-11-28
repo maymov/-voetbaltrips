@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Task;
@@ -14,7 +16,7 @@ class TaskController extends Controller
      *
      * @return Response
      */
-    public function store(TaskRequest $request)
+    public function store(Request $request)
     {
         $request->merge(['user_id' => Sentinel::getUser()->id]);
         $task = new Task($request->except('_token'));

@@ -34,35 +34,7 @@ Calendar
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="box">
-                                <div class="box-title">
-                                    <h3>Draggable Events</h3>
-                                    <div class="pull-right box-toolbar">
-                                        <a href="#" class="btn btn-link btn-xs" data-toggle="modal" data-target="#myModal">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div id='external-events'>
-                                        <div class='external-event palette-warning'>Team Out</div>
-                                        <div class='external-event palette-primary'>Product Seminar</div>
-                                        <div class='external-event palette-danger'>Client Meeting</div>
-                                        <div class='external-event palette-info'>Repeating Event</div>
-                                        <div class='external-event palette-success'>Anniversary Celebrations</div>
-                                        <p class="well no-border no-radius">
-                                            <input type='checkbox' id='drop-remove' style="opacity:1 !important" />
-                                            <label for='drop-remove'>remove after drop</label>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="box-footer">
-                                    <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Create event</a>
-                                </div>
-                            </div>
-                            <!-- /.box --> </div>
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="box">
                                 <div class="box-body">
                                     <div id="calendar"></div>
@@ -82,36 +54,26 @@ Calendar
                                     </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="input-group">
-                                        <input type="text" id="new-event" class="form-control" placeholder="Event">
-                                        <div class="input-group-btn">
-                                            <button type="button" id="color-chooser-btn" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                                Type
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" id="color-chooser">
-                                                <li>
-                                                    <a class="palette-primary" href="#">Primary</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-success" href="#">Success</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-info" href="#">Info</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-warning" href="#">warning</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-danger" href="#">Danger</a>
-                                                </li>
-                                                <li>
-                                                    <a class="palette-default" href="#">Default</a>
-                                                </li>
+                                    
+                                         <div class="form-group">
+                                             {!! Form::label('name', 'Name: ') !!}
+                                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                         </div>
 
-                                            </ul>
-                                        </div>
-                                        <!-- /btn-group --> </div>
+
+                                        <div class="form-group">
+                                            {!! Form::label('deadLine', 'Date: ') !!}
+                                            <div class="controls input-append date form_datetime" data-date=""  data-date-format="dd MM yyyy hh:ii" data-link-field="deadLine">
+                                                    <input size="16" type="text" value="" readonly class="form-control" placeholder="Please select a Date" required="required">
+                                                    <span class="add-on"><i class="icon-remove"></i></span>
+                                                    <span class="add-on"><i class="icon-th"></i></span>
+                                                </div>
+                                                <input type="hidden" id="deadLine" name="deadLine" value="" />
+                                        </div>    
+                                        <div class="form-group">
+                                             {!! Form::label('description', 'Description: ') !!}
+                                             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                                         </div>
                                     <!-- /input-group --> </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-right"  data-dismiss="modal">
@@ -138,32 +100,52 @@ Calendar
             <script>
 
         $(document).ready(function() {
-    var date = new Date();
-    var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
+
+    $('.form_datetime').datetimepicker({
+        language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 0,
+        forceParse: 0
+    });
 
             function ini_events(ele) {
                 ele.each(function() {
-
-                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                    // it doesn't need to have a start or end
                     var eventObject = {
                         title: $.trim($(this).text()) // use the element's text as the event title
                     };
-
-                    // store the Event Object in the DOM element so we can get to it later
                     $(this).data('eventObject', eventObject);
-
-                    // make the event draggable using jQuery UI
-                    //$(this).draggable({
-                      //  zIndex: 1070,
-                        //revert: true, // will cause the event to go back to its
-                        //revertDuration: 0 //  original position after the drag
-                    //});//
 
                 });
             }
+
+            $( "#add-new-event" ).click(function() {    
+                var name = $('#name').val();
+                var decription = $('#description').val();
+                var deadLine = $('#deadLine').val();
+
+
+                $.ajax({
+                    url      : "task/create",
+                    method   : "POST",
+                    dataType : "json",
+                    data     :{ task_name: name, task_description: description, task_deadline: deadLine},
+                    error: function (request, status, error) {
+                        console.log(request.responseText);
+                    }, 
+                    success  : function (resp) { 
+                        console.log(resp);
+                    }
+                });
+            });
+
+            function setDate(date) {
+                $(".form_datetime").datetimepicker("setDate", new Date(date.format()));
+            }
+
                 ini_events($('#external-events div.external-event'));
 
                 $('#calendar').fullCalendar({
@@ -177,7 +159,7 @@ Calendar
                          {
                             title: <?php echo "'" . $match->getHomeClub->name . ' - ' . $match->getAwayClub->name . "'"; ?>,
                             start: new Date("<?php echo $match->match_date; ?>"),
-                            url: 'http://booking.voetbaltrips.com/admin/matches/<?php echo $match->id; ?>',
+                            url: '/admin/matches/<?php echo $match->id; ?>',
                             backgroundColor: "#418BCA"
                         },
                     <?php }?>
@@ -191,6 +173,20 @@ Calendar
                             window.open(event.url);
                             return false;
                         }
+                    },    
+                    dayClick: function(date, jsEvent, view) {
+                        $('#myModal').modal('show');
+                        setDate(date);
+
+                        //alert('Clicked on: ' + date.format());
+
+                        //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+                        //alert('Current view: ' + view.name);
+
+                        // change the day's background color just for fun
+                        //$(this).css('background-color', 'red');
+
                     }
                 });
             });

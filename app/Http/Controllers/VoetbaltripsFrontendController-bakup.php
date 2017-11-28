@@ -37,7 +37,7 @@ use DB;
 use App\Airportlist;
 use App\Option;
 use DateTime;
-class VoetbaltripsFrontendController extends JoshController
+class VoetbaltripsFrontendController_bakup extends JoshController
 {
     /**
      * Index.

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNameTaskTable extends Migration
+class UpdateTaskDeadlineTodatetime extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddNameTaskTable extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->string('task_name')->after('user_id');
+        Schema::table('tasks', function ($table) {
+            $table->datetime('task_deadline')->change();
         });
     }
 
@@ -24,8 +24,8 @@ class AddNameTaskTable extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('task_name');
+        Schema::table('tasks', function ($table) {
+            $table->date('task_deadline')->change();
         });
     }
 }

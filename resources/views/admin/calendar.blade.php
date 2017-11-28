@@ -54,26 +54,28 @@ Calendar
                                     </h4>
                                 </div>
                                 <div class="modal-body">
-                                    
+                                    <form id="taskForm">
+                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                          <div class="form-group">
-                                             {!! Form::label('name', 'Name: ') !!}
-                                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                             {!! Form::label('task_name', 'Name: ') !!}
+                                             {!! Form::text('task_name', null, ['class' => 'form-control']) !!}
                                          </div>
 
 
                                         <div class="form-group">
-                                            {!! Form::label('deadLine', 'Date: ') !!}
-                                            <div class="controls input-append date form_datetime" data-date=""  data-date-format="dd MM yyyy hh:ii" data-link-field="deadLine">
+                                            {!! Form::label('task_deadline', 'Date: ') !!}
+                                            <div class="controls input-append date form_datetime" data-date=""  data-date-format="dd MM yyyy hh:ii" data-link-field="task_deadline">
                                                     <input size="16" type="text" value="" readonly class="form-control" placeholder="Please select a Date" required="required">
                                                     <span class="add-on"><i class="icon-remove"></i></span>
                                                     <span class="add-on"><i class="icon-th"></i></span>
                                                 </div>
-                                                <input type="hidden" id="deadLine" name="deadLine" value="" />
+                                                <input type="hidden" id="task_deadline" name="task_deadline" value="" />
                                         </div>    
                                         <div class="form-group">
-                                             {!! Form::label('description', 'Description: ') !!}
-                                             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                                             {!! Form::label('task_description', 'Description: ') !!}
+                                             {!! Form::textarea('task_description', null, ['class' => 'form-control']) !!}
                                          </div>
+                                     </form>
                                     <!-- /input-group --> </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-right"  data-dismiss="modal">
@@ -126,20 +128,20 @@ Calendar
                 var name = $('#name').val();
                 var decription = $('#description').val();
                 var deadLine = $('#deadLine').val();
+                formdata   = $("#taskForm").serialize();
 
-
-                $.ajax({
-                    url      : "task/create",
-                    method   : "POST",
-                    dataType : "json",
-                    data     :{ task_name: name, task_description: description, task_deadline: deadLine},
-                    error: function (request, status, error) {
-                        console.log(request.responseText);
-                    }, 
-                    success  : function (resp) { 
-                        console.log(resp);
-                    }
-                });
+                    $.ajax({
+                        url      : "task/create",
+                        method   : "POST",
+                        dataType : "json",
+                        data     : formdata,
+                        error : function(resp){
+                            console.log(resp);
+                        },
+                        success  : function (resp) { 
+                            console.log(resp)
+                        }
+                    });
             });
 
             function setDate(date) {

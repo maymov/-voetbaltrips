@@ -22,7 +22,7 @@ class TaskController extends Controller
         $task = new Task($request->except('_token'));
         $task->save();
 
-        return $task->id;
+        return json_encode($task);
 
     }
 

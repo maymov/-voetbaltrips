@@ -98,21 +98,22 @@ Calendar
 
         <script src="{{ asset('assets/vendors/fullcalendar/moment.min.js') }}"  type="text/javascript"></script>
         <script src="{{ asset('assets/vendors/fullcalendar/fullcalendar.min.js') }}"  type="text/javascript"></script>
+        <script src="{{ asset('assets/js/calendar.js') }}"  type="text/javascript"></script>
 
             <script>
-
         $(document).ready(function() {
 
-    $('.form_datetime').datetimepicker({
-        language:  'en',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 0,
-        forceParse: 0
-    });
+            $('.form_datetime').datetimepicker({
+                language:  'en',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 0,
+                forceParse: 0
+            });
+
 
             function ini_events(ele) {
                 ele.each(function() {
@@ -124,25 +125,8 @@ Calendar
                 });
             }
 
-            $( "#add-new-event" ).click(function() {    
-                var name = $('#name').val();
-                var decription = $('#description').val();
-                var deadLine = $('#deadLine').val();
-                formdata   = $("#taskForm").serialize();
 
-                    $.ajax({
-                        url      : "task/create",
-                        method   : "POST",
-                        dataType : "json",
-                        data     : formdata,
-                        error : function(resp){
-                            console.log(resp);
-                        },
-                        success  : function (resp) { 
-                            console.log(resp)
-                        }
-                    });
-            });
+
 
             function setDate(date) {
                 $(".form_datetime").datetimepicker("setDate", new Date(date.format()));
@@ -163,6 +147,15 @@ Calendar
                             start: new Date("<?php echo $match->match_date; ?>"),
                             url: '/admin/matches/<?php echo $match->id; ?>',
                             backgroundColor: "#418BCA"
+                        },
+                    <?php }?>
+                    <?php foreach($tasks as $task) {?>
+                         {
+                            title: <?php echo "'" . $task->task_name . "'"; ?>,
+                            start: new Date("<?php echo $task->task_deadline; ?>"),
+                            url: '/admin/task/<?php echo $task->id; ?>',
+                            editable: true,
+                            backgroundColor: "#EF6F6C"
                         },
                     <?php }?>
                     ],
@@ -192,6 +185,5 @@ Calendar
                     }
                 });
             });
-    </script>
-        
+    </script>   
 @stop

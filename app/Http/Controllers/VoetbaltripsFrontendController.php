@@ -65,6 +65,7 @@ class VoetbaltripsFrontendController extends JoshController
         $clubId = 0;
         $cityId = 0;
         $tournamentId = 0;
+        $matchId = 0;
 
         if ($request->session()->has('only_ticket')) {
             $request->session()->remove('only_ticket');
@@ -308,7 +309,10 @@ class VoetbaltripsFrontendController extends JoshController
 
         if (!empty($request->input("match_date"))) {
             $getmatch = Match::whereDate("match_date", "=", date('Y-m-d' , strtotime($request->input("match_date"))));
-        } else {
+        } elseif($request->input("matchId") && $request->input("matchId") != 0) {
+            $getmatch = Match::where("id", $request->input("matchId"));
+        }
+        else {
             $getmatch = Match::whereDate("match_date", ">=", date('Y-m-d H:i:s'));
         }
 

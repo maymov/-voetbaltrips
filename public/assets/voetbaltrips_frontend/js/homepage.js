@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    var city, tournament, club, formdata, loadclubs, loadcities = '0';
+    var city, tournament, club, matchId, formdata, loadclubs, loadcities = '0';
+
+    matchId = $('#matchId').val(); 
 
     var ddDataC, ddDataCi, ddDataT = [];
 
@@ -226,7 +228,7 @@ $(document).ready(function(){
     }
 
     window.getMatches = function() {
-        if(club == 0  && city == 0 && tournament == 0) {
+        if(club == 0  && city == 0 && tournament == 0 && matchId == 0) {
             $("#allmatcheslist").html('');
         } else {
                 $.ajax({

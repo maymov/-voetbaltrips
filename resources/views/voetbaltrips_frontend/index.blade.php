@@ -251,6 +251,7 @@
                 <form name="searchmatch" id="searchmatch" novalidate>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="club_id" name="club" value="{{$clubId}}">
+                    <input type="hidden" id="matchId" name="matchId" value="{{$matchId}}">
                     <input type="hidden" id="city_id" name="city" value="{{$cityId}}">
                     <input type="hidden" id="tournament_id" name="tournament" value="{{$tournamentId}}">
                     <span class="form-group col-lg-3 col-md-6">

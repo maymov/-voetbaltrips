@@ -384,6 +384,9 @@ $(document).ready(function(){
 
         if($('#city').data('ddslick') == undefined && $('#club').data('ddslick') == undefined && $('#tournament').data('ddslick') == undefined) {
             initializeDropdowns();
+            if(matchId != 0){
+                getMatches();
+            }
         } else {
                 if(city != 0 || tournament != 0 || club != 0) {   
                     getMatches();

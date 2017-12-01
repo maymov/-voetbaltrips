@@ -123,3 +123,33 @@ $(document).ready(function(){
         })
     });
 });
+
+function coupon_check() {
+    var coupon_code = $('#coupon_code').val();
+    
+    $.ajax({
+            url      : window.location.protocol + "//" + window.location.hostname + "/coupon_check_code",
+            method   : "GET",
+            dataType : "json",
+            data: {coupon_code: coupon_code},
+            success  : function (resp) {
+                if(resp.status == "success") {
+                    if (resp.coupon == 'valid') {
+                        Lobibox.alert("success", {
+                        msg : resp.message
+                    });
+                    }
+                    if (resp.coupon == 'not_valid') {
+                        Lobibox.alert("error", {
+                        msg : resp.message
+                    });
+                    }
+                    
+                } else {
+                    Lobibox.alert("error", {
+                        msg : resp.message
+                    });
+                }
+            }
+        })
+}

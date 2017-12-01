@@ -73,7 +73,7 @@ Add Coupon
                                 <div class="form-group">
                                     <label for="code" class="col-sm-2 control-label">Code *</label>
                                     <div class="col-sm-10">
-                                        <input name="code" type="text" placeholder="Code" class="form-control required" value="{!! Input::old('code') ?? $code !!}" />
+                                        <input name="code" type="text" placeholder="Code" class="form-control required" value="{!! Input::old('code') == null ? $code : Input::old('code') !!}" />
                                     </div>
                                 </div>
 

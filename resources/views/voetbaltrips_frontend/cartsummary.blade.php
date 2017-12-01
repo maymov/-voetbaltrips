@@ -60,9 +60,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-sm-12 coupon">
-                                        <label for="value" class="col-sm-2 control-label">Coupon</label>
+                                        <label for="value" class="col-sm-2 control-label">{{Translater::getValue('coupon')}}</label>
                                         <div class="col-sm-10">
                                             <input id="coupon_code" type="text" placeholder="" class="form-control" value="" />
+                                            <input id="coupon_check" type="button" class="btn btn-info " value="{{Translater::getValue('coupon_check')}}" onclick="coupon_check()" />
                                         </div>
                                     </div>
                                 </div>
@@ -246,9 +247,10 @@
                                 {{-- Coupon section --}}
                                 <div class="row">
                                     <div class="form-group col-sm-12 coupon">
-                                        <label for="value" class="col-sm-2 control-label">Coupon</label>
+                                        <label for="value" class="col-sm-2 control-label">{{Translater::getValue('coupon')}}</label>
                                         <div class="col-sm-10">
                                             <input id="coupon_code" type="text" placeholder="" class="form-control" value="" />
+                                            <input id="coupon_check" type="button" class="btn btn-info " value="{{Translater::getValue('coupon_check')}}" onclick="coupon_check()" />
                                         </div>
                                     </div>
                                 </div>

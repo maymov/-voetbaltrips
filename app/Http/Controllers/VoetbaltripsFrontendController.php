@@ -43,6 +43,7 @@ use App\Option;
 use DateTime;
 use Translater;
 use Session;
+use App\Discount;
 
 class VoetbaltripsFrontendController extends JoshController
 {
@@ -1188,6 +1189,29 @@ class VoetbaltripsFrontendController extends JoshController
             $onlylyTicket = false;
         }
         return view("voetbaltrips_frontend.cartsummary", compact('cart_data', 'travel_info', 'onlylyTicket', 'home_team'));
+    }
+    
+    public function couponCheckCode(Request $request)
+    {
+        $response['status'] = 'success';            
+        
+        if ($request->coupon_code == null) {
+            return;
+        }
+        
+        $coupon = Discount::where('is_used', 0)
+                ->where('code', $request->coupon_code)
+                ->first();
+        
+        if ($coupon) {
+            $response['coupon'] = 'valid';
+            $response['message'] = Translater::getValue('coupon_code_valid');
+        } else {
+            $response['coupon'] = 'not_valid';
+            $response['message'] = Translater::getValue('coupon_code_wrong');
+        }
+        
+        return response()->json($response);
     }
 
     /**

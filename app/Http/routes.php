@@ -224,6 +224,7 @@ Route::get("/tickets/travellerinfo/{match_id}", array("as" => "ticketstravelleri
 Route::post("/tickets/{match_id}/savetravellerinfo", ["uses" => "VoetbaltripsFrontendController@saveTravellerInformation"]);
 
 Route::get("/cart/summary", array("as" => "showcartsummary", "uses" => "VoetbaltripsFrontendController@cartSummary"));
+Route::get("/coupon_check_code", array("as" => "coupon_check_code", "uses" => "VoetbaltripsFrontendController@couponCheckCode"));
 Route::post("/ajax/addtickethome", array("as" => "addtickethome", "uses" => "VoetbaltripsFrontendController@sentTicketsHome"));
 
 Route::get('blog', array('as' => 'blog', 'uses' => 'BlogController@getIndexFrontend'));

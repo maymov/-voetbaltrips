@@ -73,14 +73,14 @@ Edit Coupon
                                 <div class="form-group">
                                     <label for="code" class="col-sm-2 control-label">Code *</label>
                                     <div class="col-sm-10">
-                                        <input name="code" type="text" placeholder="Code" class="form-control required" value="{!! Input::old('code') ?? $coupon->code !!}" disabled/>
+                                        <input name="code" type="text" placeholder="Code" class="form-control required" value="{!! Input::old('code') == null ? $coupon->code : Input::old('code') !!}" disabled/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="value" class="col-sm-2 control-label">Value *</label>
                                     <div class="col-sm-10">
-                                        <input name="value" type="number" step="0.01" placeholder="Discount value" class="form-control required" value="{!! Input::old('value') ?? $coupon->value !!}" />
+                                        <input name="value" type="number" step="0.01" placeholder="Discount value" class="form-control required" value="{!! Input::old('value') == null ? $coupon->value : Input::old('value') !!}" />
                                     </div>
                                 </div>
 

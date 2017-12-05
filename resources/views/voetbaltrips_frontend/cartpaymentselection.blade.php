@@ -141,7 +141,7 @@
                                 @if(!empty($cart_data['match_id']))
                                     <span class="form-group col-xs-12">&nbsp;</span>
                                     @if($cart_data['coupon_wrong'])
-                                        <span class="form-group col-xs-12 text-left"><b>Translater::getValue('coupon_code_wrong')</b></span>
+                                        <span class="form-group col-xs-12 text-left"><b>{{Translater::getValue('coupon_code_wrong')}}</b></span>
                                     @endif
                                     @if($cart_data['coupon_code'] != null)
                                         <span class="form-group col-xs-12 text-right"> <h4>Total (with discount): &euro;{{ $cart_data['total_amount'] }}</h4></span>

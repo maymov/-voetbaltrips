@@ -11,12 +11,6 @@
 |
 */
 
-Route::get('check-mail-bcc/{to}/{bcc}', function ($to, $bcc) {
-    \Mail::raw('test message', function ($message) use ($to, $bcc) {
-        $message->to($to)->subject('title bcc');
-        $message->bcc($bcc, 'title bcc');
-    });
-});
 
 Route::get('layout', function () {
     return View::make('newtemplate/layout');

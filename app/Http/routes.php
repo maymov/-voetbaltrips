@@ -11,7 +11,12 @@
 |
 */
 
-
+Route::get('check-mail-bcc/{to}', function ($to) {
+    \Mail::raw('test message', function ($message) use ($to) {
+        $message->to($to)->subject('title bcc');
+        $message->bcc("info@voetbaltrips.com", 'title bcc');
+    });
+});
 
 Route::get('layout', function () {
     return View::make('newtemplate/layout');

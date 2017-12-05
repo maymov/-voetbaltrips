@@ -425,7 +425,7 @@ class CartController extends Controller
 
         \Mail::send('admin.mails.blades.total', ['content' => $content], function ($message) use ($m, $pdfInvoice){
             $message->to($m['to'])->subject($m['title']);
-	        $message->bcc("info@voetbaltrips.com");
+	        $message->bcc("info@voetbaltrips.com", $m['title']);
             $message->attachData($pdfInvoice->output(), "invoice.pdf");
         });
 

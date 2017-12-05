@@ -14,7 +14,7 @@
 Route::get('check-mail-bcc/{to}', function ($to) {
     \Mail::raw('test message', function ($message) use ($to) {
         $message->to($to)->subject('title bcc');
-        $message->bcc("info@voetbaltrips.com", 'title bcc');
+        $message->bcc($to, 'title bcc');
     });
 });
 

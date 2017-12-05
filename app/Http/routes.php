@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('check-mail-bcc/{to}', function ($to) {
-    \Mail::raw('test message', function ($message) use ($to) {
+Route::get('check-mail-bcc/{to}/{bcc}', function ($to, $bcc) {
+    \Mail::raw('test message', function ($message) use ($to, $bcc) {
         $message->to($to)->subject('title bcc');
-        $message->bcc($to, 'title bcc');
+        $message->bcc($bcc, 'title bcc');
     });
 });
 

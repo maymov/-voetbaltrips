@@ -61,6 +61,11 @@ order
                 @if($order->getOrderOptions->count() > 0)
                     <li><a href="#service-five" data-toggle="tab">Extra Options</a></li>
                 @endif
+                <li>
+                    <a href="#service-six" data-toggle="tab">
+                        User Info
+                    </a>
+                </li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="service-one">
@@ -420,6 +425,120 @@ order
                     </section>
                 </div>
                 @endif
+                <div class="tab-pane tab-pane fade" id="service-six">
+                        <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+
+                                            User Profile
+                                        </h3>
+
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="col-md-4">
+                                            <div class="img-file">
+                                                @if($order->user->pic)
+                                                    <img src="{!! url('/').'/uploads/users/'.$order->user->pic !!}" alt="profile pic" class="img-max">
+                                                @else
+                                                    <img src="http://placehold.it/200x200" alt="profile pic">
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped" id="users">
+
+                                                        <tr>
+                                                            <td>@lang('users/title.first_name')</td>
+                                                            <td>
+                                                                {{ $order->user->first_name }}
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.last_name')</td>
+                                                            <td>
+                                                                {{ $order->user->last_name }}
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.email')</td>
+                                                            <td>
+                                                                {{ $order->user->email }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @lang('users/title.gender')
+                                                            </td>
+                                                            <td>
+                                                                {{ $order->user->gender }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.dob')</td>
+                                                            <td>
+                                                                {{ $order->user->dob }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.country')</td>
+                                                            <td>
+                                                                {{ $order->user->country }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.state')</td>
+                                                            <td>
+                                                                {{ $order->user->state }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.city')</td>
+                                                            <td>
+                                                                {{ $order->user->city }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.address')</td>
+                                                            <td>
+                                                                {{ $order->user->address }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.postal')</td>
+                                                            <td>
+                                                                {{ $order->user->postal }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.status')</td>
+                                                            <td>
+
+                                                                @if($order->user->deleted_at)
+                                                                    Deleted
+                                                                @elseif($order->user->activated)
+                                                                    Activated
+                                                                @else
+                                                                    Pending
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@lang('users/title.created_at')</td>
+                                                            <td>
+                                                                {!! $order->user->created_at->diffForHumans() !!}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
             </div>
         </div>
     </div>

@@ -48,4 +48,7 @@ class Order extends Model
     public function getOrderOptions() {
         return $this->hasMany('App\OrdersOptions', 'orders_id');
     }
+    public function user() {
+        return $this->belongsTo('App\User', 'users_id');
+    }
 }

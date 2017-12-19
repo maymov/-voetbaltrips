@@ -291,7 +291,15 @@
                             <i class="fa fa-dashboard fa-lg"></i>
                             <span class="title">Dashboard</span>
                         </a>
-                    </li>                   
+                    </li>
+
+                    <li {!! (Request::is('admin/calendar') ? 'class="active"' : '') !!}>
+                        <a href="{{ route('calendar') }}">
+                            <i class="fa fa-dashboard fa-lg"></i>
+                            <span class="title">Calendar</span>
+                        </a>
+                    </li>
+
                     <li {!! (Request::is('admin/sold-matches') || Request::is('admin/sold-matches') || Request::is('admin/sold-matches') ? 'class="active"' : '') !!}>
                         <a href="{{ route('sold-matches') }}">
                             <i class="fa fa-gamepad fa-lg"></i>

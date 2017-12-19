@@ -176,7 +176,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
     Route::post('task/{task}/delete', 'TaskController@delete');
 
 
-    Route::get('calendar', 'JoshController@calendar');
+    Route::get('calendar',  array('as' => 'calendar','uses' => 'JoshController@calendar'));
 
     /**
      * Uploading the flight csv data

@@ -295,7 +295,7 @@
 
                     <li {!! (Request::is('admin/calendar') ? 'class="active"' : '') !!}>
                         <a href="{{ route('calendar') }}">
-                            <i class="fa fa-dashboard fa-lg"></i>
+                            <i class="fa fa-calendar fa-lg"></i>
                             <span class="title">Calendar</span>
                         </a>
                     </li>

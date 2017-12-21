@@ -45,8 +45,8 @@
                             <tr>
                                 <td>{!! $generalTask->id !!}</td>
                                 <td>{!! $generalTask->name !!}</td>
-                                <td>{!! $generalTasks->date_time !!}</td>
-                                <td><a href="{{ route('admin.generalTask.setDate', $generalTasks->id )}}" class="btn btn-primary">Done</a</td>
+                                <td>{!! $generalTask->date_time !!}</td>
+                                <td><a href="{{ route('admin.generalTask.setDate', $generalTask->id )}}" class="btn btn-primary">Done</a</td>
                             </tr>
                         @endforeach
 

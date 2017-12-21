@@ -15,7 +15,7 @@ class GeneralTaskController extends Controller
      */
     public function index()
     {
-        return view('generalTask.list', ['generalTasks' => GeneralTask::all()]);
+        return view('general_task.list', ['generalTasks' => GeneralTask::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class GeneralTaskController extends Controller
      */
     public function create()
     {
-        return view('generalTask.create');
+        return view('general_task.create');
     }
 
     /**

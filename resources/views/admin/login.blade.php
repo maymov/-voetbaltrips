@@ -14,24 +14,37 @@
 </head>
 
 <body>
+
+<div class="header__content-wrap" style="    background-color: #515763;">
+    <div class="row">
+        <div class="col-md-12 header__content">
+            <div class="slicknav_menu">
+                <a href="#" aria-haspopup="true" tabindex="0" class="slicknav_btn" id="main_menu" style="outline: none;"><span class="slicknav_menutxt"></span><span    class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"    ></span></span>
+                </a>
+            </div>
+            <div class="logo logo--image">
+                <a id="logoLink" href="/" >
+                    <img id="normalImageLogo" src="{{asset('assets/newtemplate/images/logo.png')}}" alt="Voetbaltrips.com" title="Uw voetbalreis voor een sportieve prijs!">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div class="container">
         <div class="row vertical-offset-100">
             <!-- Notifications -->
             @include('notifications')
-
             <div class="col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
                 <div id="container_demo">
                     <a class="hiddenanchor" id="toregister"></a>
                     <a class="hiddenanchor" id="tologin"></a>
                     <a class="hiddenanchor" id="toforgot"></a>
                     <div id="wrapper">
+
                         <div id="login" class="animate form">
-                            <form action="{{ route('signin') }}" autocomplete="on" method="post" role="form">
-                                <h3 class="black_bg">
-                                    {{--<img src="{{ asset('assets/img/logo.png') }}" alt="josh logo">--}}
-                                    Voetbaltrips
-                                    {{--<br>Log in--}}
-                                </h3>
+                            <form action="{{ route('signin') }}" autocomplete="on" method="post" role="form" style="margin-top: 10px">
+
                                     <!-- CSRF Token -->
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 

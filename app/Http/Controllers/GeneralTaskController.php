@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GeneralTaskRules;
+use App\Http\Requests\GeneralTaskRequest;
 use App\GeneralTask;
 use Sentinel;
+use Lang;
 
 class GeneralTaskController extends Controller
 {
@@ -15,7 +16,7 @@ class GeneralTaskController extends Controller
      */
     public function index()
     {
-        return view('general_task.list', ['generalTasks' => GeneralTask::all()]);
+        return view('admin.general_task.list', ['generalTasks' => GeneralTask::all()]);
     }
 
     /**
@@ -25,7 +26,7 @@ class GeneralTaskController extends Controller
      */
     public function create()
     {
-        return view('general_task.create');
+        return view('admin.general_task.create');
     }
 
     /**
@@ -34,11 +35,11 @@ class GeneralTaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GeneralTaskRules $request)
+    public function store(GeneralTaskRequest $request)
     {
         $generalTask = GeneralTask::create($request->all());
 
-        return redirect('admin/generalTasks')->with('success', Lang::get('message.success.create'));
+        return redirect('admin/generaltasks')->with('success', Lang::get('message.success.create'));
     }
 
     /**
@@ -79,7 +80,7 @@ class GeneralTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GeneralTaskRules $request, $id)
+    public function update(GeneralTaskRequest $request, $id)
     {
 //        $task = Task::where('id', '=', $id)->update([
 //            'name'        => $request->input('name'),
@@ -134,6 +135,6 @@ class GeneralTaskController extends Controller
         ]);
 
 
-        return redirect('admin/generalTasks')->with('success', Lang::get('message.success.update'));
+        return redirect('admin/generaltasks')->with('success', Lang::get('message.success.update'));
     }
 }

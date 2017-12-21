@@ -9,15 +9,15 @@
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
-        <h1>Clubs</h1>
+        <h1>General task</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                     Dashboard
                 </a>
             </li>
-            <li>clubs</li>
-            <li class="active">Create New club</li>
+            <li>General task</li>
+            <li class="active">Create New General task</li>
         </ol>
     </section>
 
@@ -40,46 +40,18 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => 'admin/generalTasks', "enctype"=>"multipart/form-data"]) !!}
+                        {!! Form::open(['url' => 'admin/generaltasks/create', ]) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', 'Name: ') !!}
                             {!! Form::text('name', null, ['class' => 'form-control', 'required'=>'required']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label("country", "Country:") !!}
-                            {!! Form::select("country", $countries, $country_id, [
-                                    "class"        => "form-control",
-                                    "placeholder"  => "Please pick a Country",
-                                    "required"     => "required",
-                                    "id"           => "country"
-                            ]) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('city', 'City: ') !!}
-                            <select name="city" required="required" id="city" class="form-control">
-                                <option value="">Pick a City</option>
-                                @foreach($cities as $val)
-                                    <option {!! (($city_id == $val->id)?'selected="selected"':"")!!} value="{!! $val->id !!}">{!! $val->name !!}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label("emblem", "Emblem: ") !!}
-                            {!! Form::file("emblem", ["class" => "form-control"]) !!}
-                        </div>
 
-                        @foreach ($languages as $lang)
-                            <div class="form-group">
-                                {!! Form::label($lang->code, 'Story '.$lang->code.': ') !!}
-                                {!! Form::textarea($lang->code, null, ['class' => 'form-control', 'required' => 'required']) !!}
-                            </div>
-                        @endforeach
 
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="{{ route('admin.generalTasks.index') }}">
+                            <div class="col-sm-4">
+                                <a class="btn btn-danger" href="{{ route('generaltasks') }}">
                                     @lang('button.cancel')
                                 </a>
                                 <button type="submit" class="btn btn-success">

@@ -294,21 +294,21 @@
                     </li>
 
 
-                    <li {!! (Request::is('admin/generalTasks') || Request::is('admin/generalTasks/create') || Request::is('admin/generalTasks/*') ? 'class="active"' : '') !!}>
+                    <li {!! (Request::is('admin/generaltasks') || Request::is('admin/generaltasks/create') || Request::is('admin/generaltasks/*') ? 'class="active"' : '') !!}>
                         <a href="#">
                             <i class="fa fa-group fa-lg"></i>
                             <span class="title">General Tasks</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li {!! (Request::is('admin/generalTasks') ? 'class="active" id="active"' : '') !!}>
-                                <a href="{{ URL::to('admin/clubs') }}">
+                            <li {!! (Request::is('admin/generaltasks') ? 'class="active" id="active"' : '') !!}>
+                                <a href="{{ URL::to('admin/generaltasks') }}">
                                     <i class="fa fa-tasks "></i>
                                     General Tasks
                                 </a>
                             </li>
-                            <li {!! (Request::is('admin/generalTasks/create') ? 'class="active" id="active"' : '') !!}>
-                                <a href="{{ URL::to('admin/generalTasks/create') }}">
+                            <li {!! (Request::is('admin/generaltasks/create') ? 'class="active" id="active"' : '') !!}>
+                                <a href="{{ URL::to('admin/generaltasks/create') }}">
                                     <i class="fa fa-tasks "></i>
                                     Add New General Task
                                 </a>

@@ -28,7 +28,7 @@
                 <div class="panel panel-primary ">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <i class="livicon" data-name="plus-alt" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create a new club
+                            Create a new General task
                         </h4>
                     </div>
                     <div class="panel-body">
@@ -40,7 +40,7 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => 'admin/clubs', "enctype"=>"multipart/form-data"]) !!}
+                        {!! Form::open(['url' => 'admin/generalTasks', "enctype"=>"multipart/form-data"]) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', 'Name: ') !!}
@@ -79,7 +79,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="{{ route('admin.clubs.index') }}">
+                                <a class="btn btn-danger" href="{{ route('admin.generalTasks.index') }}">
                                     @lang('button.cancel')
                                 </a>
                                 <button type="submit" class="btn btn-success">
@@ -94,10 +94,6 @@
                 </div>
             </div>
         </div>
-        <!-- row-->
-        @section('footer_scripts')
-            <<script src="{{ asset('assets/js/pages/clubs.js')}}" type="text/javascript" charset="utf-8" async defer></script>
-        @stop
     </section>
 
 @stop

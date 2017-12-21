@@ -36,7 +36,8 @@
                         <tr class="filters">
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Datetime</th>
+                            <th>Date</th>
+                            <th>User</th>
                             <th>Option</th>
                         </tr>
                         </thead>
@@ -45,7 +46,8 @@
                             <tr>
                                 <td>{!! $generalTask->id !!}</td>
                                 <td>{!! $generalTask->name !!}</td>
-                                <td>{!! $generalTask->date_time !!}</td>
+                                <td>{!! date('d-m-Y', strtotime($generalTask->date_time)) !!}</td>
+                                <td>{!! $generalTask->user->first_name.' '.$generalTask->user->last_name !!}</td>
                                 <td><a href="{{'generaltasks/set_date/'.$generalTask->id}}" class="btn btn-primary">Done</a</td>
                             </tr>
                         @endforeach

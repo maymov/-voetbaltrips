@@ -296,7 +296,7 @@
 
                     <li {!! (Request::is('admin/generaltasks') || Request::is('admin/generaltasks/create') || Request::is('admin/generaltasks/*') ? 'class="active"' : '') !!}>
                         <a href="#">
-                            <i class="fa fa-group fa-lg"></i>
+                            <i class="fa fa-tasks fa-lg"></i>
                             <span class="title">General Tasks</span>
                             <span class="fa arrow"></span>
                         </a>

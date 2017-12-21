@@ -111,7 +111,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
     });
 
     # GeneralTask Management
-    Route::group(array('prefix' => 'generalTasks'), function () {
+    Route::group(array('prefix' => 'generaltasks'), function () {
         Route::get('/', array('as' => 'generalTasks', 'uses' => 'GeneralTaskController@index'));
         Route::get('create', 'GeneralTaskController@create');
         Route::post('create', 'GeneralTaskController@store');

@@ -293,6 +293,32 @@
                         </a>
                     </li>
 
+
+                    <li {!! (Request::is('admin/generalTasks') || Request::is('admin/generalTasks/create') || Request::is('admin/generalTasks/*') ? 'class="active"' : '') !!}>
+                        <a href="#">
+                            <i class="fa fa-group fa-lg"></i>
+                            <span class="title">General Tasks</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li {!! (Request::is('admin/generalTasks') ? 'class="active" id="active"' : '') !!}>
+                                <a href="{{ URL::to('admin/clubs') }}">
+                                    <i class="fa fa-tasks "></i>
+                                    General Tasks
+                                </a>
+                            </li>
+                            <li {!! (Request::is('admin/generalTasks/create') ? 'class="active" id="active"' : '') !!}>
+                                <a href="{{ URL::to('admin/generalTasks/create') }}">
+                                    <i class="fa fa-tasks "></i>
+                                    Add New General Task
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
                     <li {!! (Request::is('admin/calendar') ? 'class="active"' : '') !!}>
                         <a href="{{ route('calendar') }}">
                             <i class="fa fa-calendar fa-lg"></i>

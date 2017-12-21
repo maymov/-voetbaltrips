@@ -38,17 +38,7 @@ class GeneralTaskController extends Controller
     {
         $generalTask = GeneralTask::create($request->all());
 
-        if(isset($generalTask->id)){
-            $message = "The task '".$request->input('name')."' has been created successfully.";
-            $class = "alert alert-success";
-        }
-        else{
-            $message = "Error! please try again.";
-            $class = "alert alert-danger";
-        }
-
-        return redirect('task')->with('message', $message)
-            ->with('class', $class);
+        return redirect('admin/generalTasks')->with('success', Lang::get('message.success.create'));
     }
 
     /**
@@ -143,16 +133,7 @@ class GeneralTaskController extends Controller
             'user_id' =>  Sentinel::getUser()->id
         ]);
 
-        if(isset($generalTask)){
-            $message = "The task '".$generalTask->name."' has been updated successfully.";
-            $class = "alert alert-success";
-        }
-        else{
-            $message = "Error! please try again.";
-            $class = "alert alert-danger";
-        }
 
-        return redirect('task')->with('message', $message)
-            ->with('class', $class);
+        return redirect('admin/generalTasks')->with('success', Lang::get('message.success.update'));
     }
 }

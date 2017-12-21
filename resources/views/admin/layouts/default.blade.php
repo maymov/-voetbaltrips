@@ -34,10 +34,11 @@
 
 <body class="skin-josh">
 <header class="header">
-    <a href="{{ route('dashboard') }}" class="logo">
-        {{--<img src="{{ asset('assets/img/logo.png') }}" alt="logo">--}}
-        <h1 style="font-size: 30px;">Voetbaltrips</h1>
-    </a>
+    <div class="logo logo--image">
+        <a id="logoLink" href="/admin" >
+            <img id="normalImageLogo" src="{{asset('assets/newtemplate/images/logo.png')}}" alt="Voetbaltrips.com" title="Uw voetbalreis voor een sportieve prijs!">
+        </a>
+    </div>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <div>

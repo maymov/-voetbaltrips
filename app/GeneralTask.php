@@ -21,4 +21,9 @@ class GeneralTask extends Model
     protected $fillable = ['user_id', 'name', 'date_time'];
 
     protected $guarded = ['id'];
+
+
+    public function user() {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

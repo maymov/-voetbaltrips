@@ -109,6 +109,15 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'SentinelAdmin'), functi
         Route::get('{userId}', array('as' => 'users.show', 'uses' => 'UsersController@show'));
         Route::post('passwordreset', 'UsersController@passwordreset');
     });
+
+    # GeneralTask Management
+    Route::group(array('prefix' => 'generalTasks'), function () {
+        Route::get('/', array('as' => 'generalTasks', 'uses' => 'GeneralTaskController@index'));
+        Route::get('create', 'GeneralTaskController@create');
+        Route::post('create', 'GeneralTaskController@store');
+        Route::get('{userId}/setDate', array('as' => 'setDate', 'uses' => 'GeneralTaskController@setDate'));
+    });
+
     Route::resource('users', 'UsersController');
 
 	Route::get('deleted_users',array('as' => 'deleted_users','before' => 'Sentinel', 'uses' => 'UsersController@getDeletedUsers'));

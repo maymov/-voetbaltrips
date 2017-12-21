@@ -15,7 +15,7 @@ class GeneralTaskController extends Controller
      */
     public function index()
     {
-        echo "test";
+        return view('generalTask.list', ['generalTasks' => GeneralTask::all()]);
     }
 
     /**

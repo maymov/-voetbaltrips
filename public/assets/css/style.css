@@ -1,8 +1,16 @@
-<<<<<<< HEAD
 /*
 * Breadchumbs
 */
-    #cart_content .breadchumbs > ul {
+.cart-package-info {
+    font-weight: bold;
+}
+
+.cart-package-info .total-price {
+    color: #0d70b7;
+    font-size: 1.5em;
+}
+
+#cart_content .breadchumbs > ul {
     list-style: none;
     display: flex;
     justify-content: flex-start;
@@ -111,8 +119,6 @@
         margin-top: 5px;
     }
 }
-=======
->>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
 /*********************************************
         Theme Elements
         *********************************************/

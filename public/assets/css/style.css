@@ -52,6 +52,10 @@
     border: none;
 }
 
+#cart_content .breadchumbs > ul > li.active:last-child:after {
+    border: none;
+}
+
 #cart_content .breadchumbs > ul > li.active:after {
     position: absolute;
     display: block;

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />    
+    <title>Voetbaltrips</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('assets/newtemplate/css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/voetbaltrips_frontend/css/stylish-portfolio.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/newtemplate/css/custom.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('assets/voetbaltrips_frontend/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.loadingModal.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/lobibox.min.css') }}" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" type="text/css">
+    @yield('header_styles')
+</head>
+
+<body>
+
+    <header>
+        <!-- Icon Section Start -->
+        <div class="icon-section">
+            <div class="container">
+                <div class="header__info">
+                    <div class="header__info__items-left"><div class="header__info__item header__info__item--phone"><i class="fa fa-phone"></i>030-3690059</div><div class="header__info__item header__info__item--clock"><i class="fa fa-clock-o"></i>9:00 - 17:00</div></div>
+
+                    <div class="header__info__items-right">
+                        <div class="header__info__item header__info__item--delimiter header__info__item--social-icons"><a href="http://facebook.com/voetbaltrips"><i class="fa fa-facebook"></i></a></div>              <div class="header__info__item header__info__item--delimiter header__info__item--search"><a data-effect="mfp-zoom-in" class="popup-search-form" href="#search-form-header"><i class="fa fa-search"></i></a></div>
+
+                    </div>
+                </div>
+
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"> <i class="livicon" data-name="facebook" data-size="18" data-loop="true" data-c="#fff" data-hc="#757b87"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="livicon" data-name="twitter" data-size="18" data-loop="true" data-c="#fff" data-hc="#757b87"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="livicon" data-name="google-plus" data-size="18" data-loop="true" data-c="#fff" data-hc="#757b87"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="livicon" data-name="linkedin" data-size="18" data-loop="true" data-c="#fff" data-hc="#757b87"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="livicon" data-name="rss" data-size="18" data-loop="true" data-c="#fff" data-hc="#757b87"></i>
+                        </a>
+                    </li>
+                    <li class="pull-right">
+                        <ul class="list-inline icon-position">
+                            <li>
+                                <a href="mailto:"><i class="livicon" data-name="mail" data-size="18" data-loop="true" data-c="#fff" data-hc="#fff"></i></a>
+                                <label class="hidden-xs"><a href="mailto:" class="text-white">info@voetbaltrips.com</a></label>
+                            </li>
+                            <li>
+                                <a href="tel:"><i class="livicon" data-name="phone" data-size="18" data-loop="true" data-c="#fff" data-hc="#fff"></i></a>
+                                <label class="hidden-xs"><a href="tel:"class="text-white">(703) 717-4200</a></label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //Icon Section End -->
+        <!-- Nav bar Start -->
+        <nav class="navbar navbar-default container">
+            <div class="navbar-header">
+                <button type="button" id="nav-icon3" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <a href="#"> <i class="livicon" data-name="responsive-menu" data-size="25" data-loop="true" data-c="#757b87" data-hc="#ccc"></i></a>
+                </button>
+
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('assets/newtemplate/images/voetbaltripslogonew-01.png') }}" class="logo_position">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li {!! (Request::is('/') ? 'class="active"' : '') !!}><a href="{{ route('home') }}"> Home</a>
+                    </li>
+                    <li class="dropdown {!! (Request::is('typography') || Request::is('advancedfeatures') || Request::is('grid') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Features <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::to('typography') }}">Typography</a>
+                            </li>
+                            <li><a href="{{ URL::to('advancedfeatures') }}">Advanced Features</a>
+                            </li>
+                            <li><a href="{{ URL::to('grid') }}">Grid System</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {!! (Request::is('aboutus') || Request::is('timeline') || Request::is('faq') || Request::is('blank_page')  ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Pages <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::to('aboutus') }}">About Us</a>
+                            </li>
+                            <li><a href="{{ URL::to('timeline') }}">Timeline</a></li>
+                            <li><a href="{{ URL::to('price') }}">Price</a>
+                            </li>
+                            <li><a href="{{ URL::to('404') }}">404 Error</a>
+                            </li>
+                            <li><a href="{{ URL::to('500') }}">500 Error</a>
+                            </li>
+                            <li><a href="{{ URL::to('faq') }}">FAQ</a>
+                            </li>
+                            <li><a href="{{ URL::to('blank_page') }}">Blank</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {!! (Request::is('products') || Request::is('single_product') || Request::is('compareproducts') || Request::is('category')  ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Shop <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::to('products') }}">Products</a>
+                            </li>
+                            <li><a href="{{ URL::to('single_product') }}">Single Product</a>
+                            </li>
+                            <li><a href="{{ URL::to('compareproducts') }}">Compare Products</a>
+                            </li>
+                            <li><a href="{{ URL::to('category') }}">Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {!! (Request::is('portfolio') || Request::is('portfolioitem') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Portfolio <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::to('portfolio') }}">Portfolio</a>
+                            </li>
+                            <li><a href="{{ URL::to('portfolioitem') }}">Portfolio Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown {!! (Request::is('news') || Request::is('news_item') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> News <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ URL::to('news') }}">News</a>
+                            </li>
+                            <li><a href="{{ URL::to('news_item') }}">News Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li {!! (Request::is('blog') || Request::is('blogitem/*') ? 'class="active"' : '') !!}><a href="{{ URL::to('blog') }}"> Blog</a>
+                    </li>
+                    <li {!! (Request::is('contact') ? 'class="active"' : '') !!}><a href="{{ URL::to('contact') }}">Contact</a>
+                    </li>
+                    {{--based on anyone login or not display menu items--}}
+                    @if(Sentinel::guest())
+                        <li><a href="{{ URL::to('login') }}">Login</a>
+                        </li>
+                        <li><a href="{{ URL::to('register') }}">Register</a>
+                        </li>
+                    @else
+                        <li class="dropdown {!! (Request::is('my-account') || Request::is('my-orders') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Account <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ URL::to('my-account') }}">My Account</a>
+                                </li>
+                                <li><a href="{{ URL::to('my-orders') }}">My Orders</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ URL::to('logout') }}">Logout</a>
+                        </li>
+                    @endif
+                    {{--<li><h1> <span style="cursor: pointer;" class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge top-cart-price"></span></span></h1></li>--}}
+                    <li>
+                        <a class="top-cart-price"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Nav bar End -->
+    </header>
+
+
+    @yield('content')
+
+
+<div id="load_popup_modal_show_id" class="modal fade" tabindex="-1"></div>
+    <!-- Call to Action -->
+    <aside class="call-to-action bg-primary">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <hgroup>
+                        <h2>
+Meld je aan voor onze nieuwsbrief
+                        </h2>
+                    </hgroup>
+                    <div class="text-center">
+                        <form action="#">
+                            <div class="input-group center-block">
+                                <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Jouw email" required>
+                                <button class="btn btn-info btn-lg" type="submit">Aanmelden</button>
+                            </div>
+                        </form>
+                    </div>
+                    <small class="promise"><em>Wij gaan vertrouwelijk met uw gegevens om</em></small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="container">
+    <div class="row margin-top margin-bottom footer__widgets-areas">
+<div class="col-md-3"><div class="widget block-after-indent widget_text" id="text-1"><h3 class="widget__title">Over ons</h3>            <div class="textwidget">Al sinds 2011 verzorgt Voetbaltrips.com voetbalreizen binnen heel Europa. Klik hier voor meer informatie over ons.</div>
+        </div></div><div class="col-md-3"></div><div class="col-md-3"><div class="widget block-after-indent widget_text" id="text-2">           <div class="textwidget"></div>
+        </div></div><div class="col-md-3"><div class="widget block-after-indent widget_contact_us_adventure_tours" id="contact_us_adventure_tours-1"><div class="widget-contact-info"><h3 class="widget__title">Contact</h3><div class="widget-contact-info__item"><div class="widget-contact-info__item__icon"><i class="fa fa-map-marker"></i></div><div class="widget-contact-info__item__text"><span>Lomanlaan 55, 3526XC, Utrecht</span></div></div><div class="widget-contact-info__item"><div class="widget-contact-info__item__icon"><i class="fa fa-phone"></i></div><div class="widget-contact-info__item__text">030 - 3690059</div></div><div class="widget-contact-info__item"><div class="widget-contact-info__item__icon"><i class="fa fa-envelope widget-contact-info__item__icon__email"></i></div><div class="widget-contact-info__item__text"><a href="mailto:info@voetbaltrips.com">info@voetbaltrips.com</a></div></div></div></div></div>  </div>
+</div>
+    <div class="footer__bottom">
+        <div class="footer__arrow-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer__copyright">&copy; Voetbaltrips.com - Alle rechten voorbehouden</div>
+                </div>
+                                    <div class="col-md-6">
+                        <div class="footer-nav">
+                            <ul class="menu" id="menu-footer-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-268" id="menu-item-268"><a href="#">Terms &amp; Conditions</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1213" id="menu-item-1213"><a href="#">Cookies</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-270" id="menu-item-270"><a href="#">Privacy Policy</a></li>
+</ul>                       </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/voetbaltrips_frontend/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('assets/voetbaltrips_frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{asset('assets/js/jquery.loadingModal.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/lobibox.min.js')}}" type="text/javascript"></script>
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+    <script src="{{ asset('assets/newtemplate/js/custom.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Lobibox.base.DEFAULTS = $.extend({}, Lobibox.base.DEFAULTS, {
+                iconSource: 'fontAwesome',
+                soundPath : "<?=url('assets/sounds')?>/"
+            });
+            Lobibox.notify.DEFAULTS = $.extend({}, Lobibox.notify.DEFAULTS, {
+                iconSource: 'fontAwesome',
+                soundPath : "<?=url('assets/sounds')?>/"
+            });
+        });
+
+        $(document).ready(function(){
+            var $modal = $('#load_popup_modal_show_id');
+            $('.my-cart-icon').on('click', function(){
+                $modal.load('{!! url('mycart-popup') !!}', {'_token': $("[name=_token]").val()},
+                function(){
+                    $modal.modal('show');
+                });
+            });
+        });
+    </script>
+    @yield('footer_scripts')
+</body>
+
+</html>

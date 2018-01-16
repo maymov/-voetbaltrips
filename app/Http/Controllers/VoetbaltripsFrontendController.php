@@ -1596,8 +1596,8 @@ class VoetbaltripsFrontendController extends JoshController
         /**
          * take price of match ticket
          */
-        if ($request->session()->has('cart_quantity')) {
-            $cart_data['quantity'] = $request->session()->get('cart_quantity');
+        if (! $request->session()->has('cart_quantity')) {
+            $cart_data['quantity'] = 1;
         }
         if ($request->session()->has('cart_match')) {
             $cart_data['match_id']    = $request->session()->get('cart_match');
@@ -1654,9 +1654,8 @@ class VoetbaltripsFrontendController extends JoshController
         }
 
 
-        //really dont know how to make breadchumbs in this fckn architecture
-        $cartClass = $request->className;
-
+        //really dont know how to make breadcrumbs in this fckn architecture
+        $cartClass = $request->className ? $request->className : null;
 
         if (! $request->session()->get('only_ticket') && $cartClass != null) {
             $breadchumbs = "<ul>";

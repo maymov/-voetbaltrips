@@ -1596,6 +1596,9 @@ class VoetbaltripsFrontendController extends JoshController
         /**
          * take price of match ticket
          */
+        if ($request->session()->has('cart_quantity')) {
+            $cart_data['quantity'] = $request->session()->get('cart_quantity');
+        }
         if ($request->session()->has('cart_match')) {
             $cart_data['match_id']    = $request->session()->get('cart_match');
             $cart_data['quantity']    = $request->session()->get('cart_quantity');

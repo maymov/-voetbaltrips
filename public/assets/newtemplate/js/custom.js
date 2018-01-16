@@ -1,10 +1,16 @@
 var showCartPrice = function() {
+<<<<<<< HEAD
     var className = $("#cart_content").attr('class');
+=======
+>>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
     $.ajax({
         url : window.location.protocol+"//"+window.location.hostname+"/getcartprice",
         method : "GET",
         dataType : "json",
+<<<<<<< HEAD
         data: {'className': className },
+=======
+>>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
         success : function (resp) {
             $("#cart_content").html(resp.total);
         }

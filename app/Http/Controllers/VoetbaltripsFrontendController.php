@@ -1611,6 +1611,10 @@ class VoetbaltripsFrontendController extends JoshController
          * $subtotal = 80
          */
         if ($request->session()->has('cart_flight')) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
             $flight_array               = $request->session()->get("cart_flight");
 
             $dept                       = Flight::find($flight_array['dept_flight']);
@@ -1649,6 +1653,7 @@ class VoetbaltripsFrontendController extends JoshController
             }
             $total = ($total+$opt_tot);
         }
+<<<<<<< HEAD
 
         //really dont know how to make breadchumbs in this fckn architecture
         $cartClass = $request->className;
@@ -1702,10 +1707,15 @@ class VoetbaltripsFrontendController extends JoshController
                                  "<div class='breadchumbs'>".
                                     $breadchumbs.
                                  "</div>".
+=======
+        if ($subtotal > 0) {
+            $response['total'] = "<div class='row text-center'>".
+>>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
                                  "<div class='container'>".
                                  //"<label class='winkel_name_cart'>".Translater::getValue('label-shopping-cart')."</label>".
                                  "<label class='cart_teams'>$for_cart_string</label>".
                                  "<span class='text-center' id='package_show'>".
+<<<<<<< HEAD
 //                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span>".
                                  "<button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
                                  "<div class='container'>".
@@ -1722,6 +1732,10 @@ class VoetbaltripsFrontendController extends JoshController
 //                "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span><button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>";
 //        }
 
+=======
+                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span><button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>";
+        }
+>>>>>>> 869b1d2951e79a669f806690e37ac6d658836c3e
         return response()->json($response);
     }
 

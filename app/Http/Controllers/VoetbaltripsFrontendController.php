@@ -1679,19 +1679,23 @@ class VoetbaltripsFrontendController extends JoshController
         }
 
         $packageInfo = "";
-        if (! $request->session()->get('only_ticket')) {
-            $packageInfo .= "<div class='col-sm-4'>" .
-                "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} {$cart_data['dept_flight']->departure_date}</span><br />" .
-                "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} {$cart_data['return_flight']->arrive_date}</span>";
-            $packageInfo .= "</div>";
+        if (! $request->session()->has('only_ticket')) {
+            try {
+                $packageInfo .= "<div class='col-sm-4'>" .
+                    "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} {$cart_data['dept_flight']->departure_date}</span><br />" .
+                    "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} {$cart_data['return_flight']->arrive_date}</span>";
+                $packageInfo .= "</div>";
 
-            $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
-            $ticketsCategory = $ticketMatched[2];
+                $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
+                $ticketsCategory = $ticketMatched[2];
 
-            $packageInfo .= "<div class='col-sm-4'>" .
-                "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />" .
-                "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
-            $packageInfo .= "</div>";
+                $packageInfo .= "<div class='col-sm-4'>" .
+                    "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />" .
+                    "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
+                $packageInfo .= "</div>";
+            } catch (Exception $e) {
+
+            }
         }
 
         $subtotalPPP = addAdditionalPrice($subtotal) + ($opt_tot > 0 ? $opt_tot / $cart_data['quantity'] : 0);

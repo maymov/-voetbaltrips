@@ -1683,8 +1683,8 @@ class VoetbaltripsFrontendController extends JoshController
         $packageInfo = "";
         if ($request->session()->has('cart_flight')) {
             $packageInfo .= "<div class='col-sm-4'>" .
-                "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} ".date("d/m/Y", strtotime($cart_data['dept_flight']->departure_date)). "</span><br />" .
-                "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} ".date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
+                "<span>" . Translater::getValue('cart-departure-flight') . ": ".date("H:i", strtotime($cart_data['dept_flight']->departure_time)). " " .date("d/m/Y", strtotime($cart_data['dept_flight']->departure_date)). "</span><br />" .
+                "<span>" . Translater::getValue('cart-return-flight') . ": ".date("H:i", strtotime($cart_data['return_flight']->arrive_time)). " " .date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
             $packageInfo .= "</div>";
         }
         if ($request->session()->has("cart_room")) {

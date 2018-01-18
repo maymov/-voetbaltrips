@@ -1658,7 +1658,7 @@ class VoetbaltripsFrontendController extends JoshController
         $cartClass = $request->className ? $request->className : null;
 
         if (! $request->session()->get('only_ticket') && $cartClass != null) {
-            $breadchumbs = "<ul>";
+            $breadcrumbs = "<ul>";
             $breads = [];
             //TODO: rename all with translating like Translater::getValue('label-shopping-cart')
             //but need to add translations very first
@@ -1670,21 +1670,21 @@ class VoetbaltripsFrontendController extends JoshController
             $breads['cart_cartsummary']     = Translater::getValue('cart_cartsummary');
             foreach ($breads as $key => $bread) {
                 if ($key == $cartClass) {
-                    $breadchumbs .= "<li class='active'>$bread</li>";
+                    $breadcrumbs .= "<li class='active'>$bread</li>";
                 } else {
-                    $breadchumbs .= "<li>$bread</li>";
+                    $breadcrumbs .= "<li>$bread</li>";
                 }
             }
-            $breadchumbs .= "</ul>";
+            $breadcrumbs .= "</ul>";
         } else {
-            $breadchumbs = "";
+            $breadcrumbs = "";
         }
 
         $packageInfo = "";
         if ($request->session()->has('cart_flight')) {
             $packageInfo .= "<div class='col-sm-4'>" .
-                "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} {$cart_data['dept_flight']->departure_date}</span><br />" .
-                "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} {$cart_data['return_flight']->arrive_date}</span>";
+                "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} ".date("d/m/Y", strtotime($cart_data['dept_flight']->departure_date)). "</span><br />" .
+                "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} ".date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
             $packageInfo .= "</div>";
         }
         if ($request->session()->has("cart_room")) {
@@ -1706,12 +1706,13 @@ class VoetbaltripsFrontendController extends JoshController
 
         if ($subtotal > 0) {
             $response['total'] = "<div class='row text-center'>".
-                                 "<div class='breadchumbs'>".
-                                    $breadchumbs.
+                                 "<div class='breadcrumbs'>".
+                                    $breadcrumbs.
                                  "</div>".
                                  "<div class='container'>".
                                  //"<label class='winkel_name_cart'>".Translater::getValue('label-shopping-cart')."</label>".
-                                 "<label class='cart_teams'>$for_cart_string</label>".
+                                 "<label class='cart_reserving'>". Translater::getValue('cart-booking') ."</label>".
+                                 "<label class='cart_teams_center'>$for_cart_string</label>".
                                  "<span class='text-center' id='package_show'>".
 //                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span>".
                                  "<button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".

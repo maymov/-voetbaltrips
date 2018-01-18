@@ -13,7 +13,7 @@
 #cart_content .breadchumbs > ul {
     list-style: none;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 

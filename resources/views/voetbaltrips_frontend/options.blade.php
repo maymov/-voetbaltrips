@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                        <h3 style="font-weight: 700;">{{Translater::getValue('title-label-extra-options-to-buy')}}</h3>
+                            <span class="order-block-title">{{Translater::getValue('title-label-extra-options-to-buy')}}</span>
                             {{ csrf_field() }}
                         @foreach($options as $opt)
                                 <?php

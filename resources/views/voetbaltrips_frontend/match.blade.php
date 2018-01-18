@@ -24,6 +24,7 @@
                     {{session()->set('show', true)}}
                 @endif
             @endif
+                <span class="order-block-title">{{Translater::getValue('order-header-match')}}</span>
             <div class="item-container">
                 <div class="container">
                     <div class="row">

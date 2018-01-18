@@ -1662,12 +1662,12 @@ class VoetbaltripsFrontendController extends JoshController
             $breads = [];
             //TODO: rename all with translating like Translater::getValue('label-shopping-cart')
             //but need to add translations very first
-            $breads['cart_match']           = 'Match';
-            $breads['cart_flightselection'] = 'Flight';
-            $breads['cart_roomselection']   = 'Accomodation';
-            $breads['cart_extras']          = 'Extras';
-            $breads['cart_travellerinfo']   = 'Traveler Info';
-            $breads['cart_cartsummary']     = 'Summary';
+            $breads['cart_match']           = Translater::getValue('cart_match');
+            $breads['cart_flightselection'] = Translater::getValue('cart_flightselection');
+            $breads['cart_roomselection']   = Translater::getValue('cart_roomselection');
+            $breads['cart_extras']          = Translater::getValue('cart_extras');
+            $breads['cart_travellerinfo']   = Translater::getValue('cart_travellerinfo');
+            $breads['cart_cartsummary']     = Translater::getValue('cart_cartsummary');
             foreach ($breads as $key => $bread) {
                 if ($key == $cartClass) {
                     $breadchumbs .= "<li class='active'>$bread</li>";

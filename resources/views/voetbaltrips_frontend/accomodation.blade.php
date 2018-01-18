@@ -24,6 +24,7 @@
             <div id="cart_content" class="cart_roomselection"></div>
         </div>
         <div class="content-wrapper">
+            <span class="order-block-title">{{Translater::getValue('order-header-accommodation')}}</span>
             <div class="container">
                 @if($accomodations->count() > 0)
                  <div class="row">

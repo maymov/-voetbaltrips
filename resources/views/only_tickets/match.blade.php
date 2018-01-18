@@ -18,6 +18,7 @@
             <div id="cart_content"></div>
         </div>
         <div class="content-wrapper">
+            <span class="order-block-title">{{Translater::getValue('order-header-match')}}</span>
             @if (!empty($fixed))
                 @if (!session()->get('show'))
                     <input class="hide" name="{{$fixed['title']}}" text="{{$fixed['text']}}" value="{{$fixed['val']}}" id="fixed">

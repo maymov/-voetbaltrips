@@ -129,6 +129,7 @@
         <div class="content-wrapper flight-blade">
             <div class="container">
                 <div class="row" id="my-row" >
+                    <span class="order-block-title">{{Translater::getValue('order-header-flight')}}</span>
                     <form name="searchform" id="searchform" method="POST" novalidate>
                         <div class="container">
                             <div class="row">

@@ -22,6 +22,12 @@
 
 }
 
+.order-block-title {
+    color: #0d70b7;
+    font-weight: 700;
+    font-size: 1.55em;
+}
+
 #cart_content .breadcrumbs > ul {
     list-style: none;
     display: flex;

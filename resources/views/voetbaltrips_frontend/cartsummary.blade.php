@@ -19,7 +19,7 @@
 
 <section id="" class="">
     <div class="container">
-        <div id="cart_content"></div>
+        <div id="cart_content" class="cart_cartsummary"></div>
     </div>
     <div class="content-wrapper checkout-page">
         <div class="container">

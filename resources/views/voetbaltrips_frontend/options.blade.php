@@ -8,7 +8,7 @@
     <!-- About -->
     <section id="" class="">
         <div class="container">
-            <div id="cart_content"></div>
+            <div id="cart_content" class="cart_extras"></div>
         </div>
         <div class="content-wrapper extra-options">
             <div class="item-container">

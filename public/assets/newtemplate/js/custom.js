@@ -1,8 +1,17 @@
 var showCartPrice = function() {
+    var className = $("#cart_content").attr('class');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $.ajax({
         url : window.location.protocol+"//"+window.location.hostname+"/getcartprice",
-        method : "GET",
+        method : "POST",
         dataType : "json",
+        data: {'className': className },
         success : function (resp) {
             $("#cart_content").html(resp.total);
         }

@@ -21,7 +21,7 @@
     <!-- About -->
     <section id="" class="">
         <div class="container">
-            <div id="cart_content"></div>
+            <div id="cart_content" class="cart_roomselection"></div>
         </div>
         <div class="content-wrapper">
             <div class="container">

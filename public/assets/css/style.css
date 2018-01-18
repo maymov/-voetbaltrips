@@ -1,3 +1,124 @@
+/*
+* Breadchumbs
+*/
+.cart-package-info {
+    font-weight: bold;
+}
+
+.cart-package-info .total-price {
+    color: #0d70b7;
+    font-size: 1.5em;
+}
+
+#cart_content .breadchumbs > ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#cart_content .breadchumbs > ul > li {
+    position: relative;
+    height: 26px;
+    padding: 0 10px 0 42px;
+    margin-right: 36px;
+    background-color: #d3d3d3;
+    color: black;
+    font-weight: bold;
+}
+
+#cart_content .breadchumbs > ul > li:before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    border-left: 36px solid white;
+    border-bottom: 13px solid transparent;
+    border-top: 13px solid transparent;
+}
+
+#cart_content .breadchumbs > ul > li:after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 100%;
+    border-left: 36px solid #d3d3d3;
+    border-bottom: 13px solid transparent;
+    border-top: 13px solid transparent;
+}
+
+#cart_content .breadchumbs > ul > li:first-child {
+    padding-left: 15px;
+}
+
+#cart_content .breadchumbs > ul > li:first-child:before {
+    border: none;
+}
+
+#cart_content .breadchumbs > ul > li:last-child:after {
+    border: none;
+}
+
+#cart_content .breadchumbs > ul > li.active:last-child:after {
+    border: none;
+}
+
+#cart_content .breadchumbs > ul > li.active:after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 100%;
+    border-left: 36px solid orangered;
+    border-bottom: 13px solid transparent;
+    border-top: 13px solid transparent;
+}
+
+#cart_content .breadchumbs > ul > li.active {
+    background-color: orangered;
+    color: white;
+}
+
+/*Media*/
+@media (max-width: 990px) {
+    #cart_content .breadchumbs > ul > li {
+        padding: 0 10px 0 21px;
+        margin-right: 6px;
+    }
+
+    #cart_content .breadchumbs > ul > li:before {
+        z-index: 0;
+        border-left: 12px solid white;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+    }
+
+    #cart_content .breadchumbs > ul > li:after {
+        z-index: 1;
+        border-left: 12px solid #d3d3d3;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+    }
+
+    #cart_content .breadchumbs > ul > li.active:after {
+        z-index: 1;
+        border-left: 12px solid orangered;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+    }
+}
+
+@media (max-width: 720px) {
+    #cart_content .breadchumbs > ul {
+        flex-wrap: wrap;
+    }
+
+    #cart_content .breadchumbs > ul > li {
+        margin-top: 5px;
+    }
+}
 /*********************************************
         Theme Elements
         *********************************************/

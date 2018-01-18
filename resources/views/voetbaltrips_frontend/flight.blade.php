@@ -124,7 +124,7 @@
     <!-- About -->
     <section id="" class="">
         <div class="container">
-            <div id="cart_content"></div>
+            <div id="cart_content" class="cart_flightselection"></div>
         </div>
         <div class="content-wrapper flight-blade">
             <div class="container">

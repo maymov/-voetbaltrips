@@ -1596,6 +1596,9 @@ class VoetbaltripsFrontendController extends JoshController
         /**
          * take price of match ticket
          */
+        if (! $request->session()->has('cart_quantity')) {
+            $cart_data['quantity'] = 1;
+        }
         if ($request->session()->has('cart_match')) {
             $cart_data['match_id']    = $request->session()->get('cart_match');
             $cart_data['quantity']    = $request->session()->get('cart_quantity');
@@ -1611,7 +1614,6 @@ class VoetbaltripsFrontendController extends JoshController
          * $subtotal = 80
          */
         if ($request->session()->has('cart_flight')) {
-
             $flight_array               = $request->session()->get("cart_flight");
 
             $dept                       = Flight::find($flight_array['dept_flight']);
@@ -1650,14 +1652,83 @@ class VoetbaltripsFrontendController extends JoshController
             }
             $total = ($total+$opt_tot);
         }
+
+
+        //really dont know how to make breadcrumbs in this fckn architecture
+        $cartClass = $request->className ? $request->className : null;
+
+        if (! $request->session()->get('only_ticket') && $cartClass != null) {
+            $breadchumbs = "<ul>";
+            $breads = [];
+            //TODO: rename all with translating like Translater::getValue('label-shopping-cart')
+            //but need to add translations very first
+            $breads['cart_match']           = Translater::getValue('cart_match');
+            $breads['cart_flightselection'] = Translater::getValue('cart_flightselection');
+            $breads['cart_roomselection']   = Translater::getValue('cart_roomselection');
+            $breads['cart_extras']          = Translater::getValue('cart_extras');
+            $breads['cart_travellerinfo']   = Translater::getValue('cart_travellerinfo');
+            $breads['cart_cartsummary']     = Translater::getValue('cart_cartsummary');
+            foreach ($breads as $key => $bread) {
+                if ($key == $cartClass) {
+                    $breadchumbs .= "<li class='active'>$bread</li>";
+                } else {
+                    $breadchumbs .= "<li>$bread</li>";
+                }
+            }
+            $breadchumbs .= "</ul>";
+        } else {
+            $breadchumbs = "";
+        }
+
+        $packageInfo = "";
+        if ($request->session()->has('cart_flight')) {
+            $packageInfo .= "<div class='col-sm-4'>" .
+                "<span>" . Translater::getValue('cart-departure-flight') . ": {$cart_data['dept_flight']->departure_time} {$cart_data['dept_flight']->departure_date}</span><br />" .
+                "<span>" . Translater::getValue('cart-return-flight') . ": {$cart_data['return_flight']->arrive_time} {$cart_data['return_flight']->arrive_date}</span>";
+            $packageInfo .= "</div>";
+        }
+        if ($request->session()->has("cart_room")) {
+                $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
+                $ticketsCategory = $ticketMatched[2];
+
+                $packageInfo .= "<div class='col-sm-4'>" .
+                    "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />" .
+                    "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
+                $packageInfo .= "</div>";
+        }
+
+        $subtotalPPP = addAdditionalPrice($subtotal) + ($opt_tot > 0 ? $opt_tot / $cart_data['quantity'] : 0);
+
+        $packageInfo .= "<div class='col-sm-4'>".
+            "<span>".Translater::getValue('cart-ppp').": &euro;".$subtotalPPP."</span><br />".
+            "<span class='total-price'>".Translater::getValue('cart-total-price').": &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot)."</span>";
+        $packageInfo .= "</div>";
+
         if ($subtotal > 0) {
             $response['total'] = "<div class='row text-center'>".
+                                 "<div class='breadchumbs'>".
+                                    $breadchumbs.
+                                 "</div>".
                                  "<div class='container'>".
                                  //"<label class='winkel_name_cart'>".Translater::getValue('label-shopping-cart')."</label>".
                                  "<label class='cart_teams'>$for_cart_string</label>".
                                  "<span class='text-center' id='package_show'>".
-                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span><button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>";
+//                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span>".
+                                 "<button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
+                                 "<div class='container cart-package-info'>".
+                                    $packageInfo.
+                                 "</div>";
         }
+
+//        if ($subtotal > 0) {
+//            $response['total'] = "<div class='row text-center'>".
+//                "<div class='container'>".
+//                //"<label class='winkel_name_cart'>".Translater::getValue('label-shopping-cart')."</label>".
+//                "<label class='cart_teams'>$for_cart_string</label>".
+//                "<span class='text-center' id='package_show'>".
+//                "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span><button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>";
+//        }
+
         return response()->json($response);
     }
 

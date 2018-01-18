@@ -39,6 +39,7 @@ User Account
                               action="{{ route('my-account') }}" method="POST">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {{--
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Avatar:</label>
                                 <div class="col-md-10">
@@ -64,7 +65,7 @@ User Account
                                     </div>
                                 </div>
                             </div>
-
+                            --}}
                             <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
                                 <label class="col-lg-2 control-label">
                                     {{Translater::getValue('form-label-first-name')}}:
@@ -165,6 +166,7 @@ User Account
                                     </div>
                                 </div>
                             </div>
+                            {{--
                             <div>
                                 <h3 class="text-primary">{{Translater::getValue('label-contact')}}: </h3>
                             </div>
@@ -237,7 +239,7 @@ User Account
                                     <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
                                 </div>
                             </div>
-
+                            --}}
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <button class="btn btn-primary" type="submit">{{Translater::getValue('button-save')}}</button>

@@ -13,8 +13,8 @@
 }
 
 .cart_reserving {
+    width:33%;
     color: #0d70b7;
-    float:  left;
     font-weight: 700;
     font-size: 1.467em;
     text-align: left;
@@ -22,9 +22,12 @@
 }
 
 .cart_teams_center {
-
+    width:33%;
 }
 
+.cart_btn {
+    width:33%;
+}
 .order-block-title {
     color: #0d70b7;
     margin-left: 40px;
@@ -161,6 +164,18 @@
 
     .only_tickets > li {
         width: 33% !important;
+    }
+
+    .cart_reserving {
+        width: auto;
+    }
+
+    .cart_teams_center {
+        width: auto;
+    }
+
+    .cart_btn {
+        width: auto;
     }
 }
 

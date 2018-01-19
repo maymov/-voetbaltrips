@@ -24,6 +24,8 @@ class TicketOnlySaleController extends  JoshController
 {
 	public function getIndexTickets(Request $request)
 	{
+        $home = "tickets";
+
 		$city_uri       = '';
         $club_uri       = '';
         $tournament_uri = '';

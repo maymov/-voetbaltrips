@@ -19,7 +19,7 @@
 
    <section class="content">
         <div class="container">
-            <div id="cart_content"></div>
+            <div id="cart_content" class="cart_travellerinfo"></div>
         </div>
         <div class="container">
             @if ($errors->any())

@@ -155,7 +155,11 @@
 @media (max-width: 768px) {
     #cart_content .breadcrumbs > ul > li {
         font-size: 11px;
-        width: auto !important;
+        width: auto;
+    }
+
+    .only_tickets > li {
+        width: 33% !important;
     }
 }
 

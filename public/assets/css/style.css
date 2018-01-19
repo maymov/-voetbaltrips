@@ -39,8 +39,9 @@
 #cart_content .breadcrumbs > ul > li {
     position: relative;
     height: 26px;
-    padding: 0 10px 0 42px;
-    margin-right: 36px;
+    width: 17%;
+    padding: 0 10px 0 27px;
+    margin-right: 20px;
     background-color: #d3d3d3;
     color: black;
     font-weight: bold;
@@ -52,7 +53,7 @@
     content: "";
     top: 0;
     left: 0;
-    border-left: 36px solid white;
+    border-left: 20px solid white;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
 }
@@ -63,7 +64,7 @@
     content: "";
     top: 0;
     left: 100%;
-    border-left: 36px solid #d3d3d3;
+    border-left: 20px solid #d3d3d3;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
 }
@@ -85,14 +86,7 @@
 }
 
 #cart_content .breadcrumbs > ul > li.active:after {
-    position: absolute;
-    display: block;
-    content: "";
-    top: 0;
-    left: 100%;
-    border-left: 36px solid orangered;
-    border-bottom: 13px solid transparent;
-    border-top: 13px solid transparent;
+    border-left: 20px solid orangered;
 }
 
 #cart_content .breadcrumbs > ul > li.active {
@@ -101,10 +95,17 @@
 }
 
 /*Media*/
+@media (max-width: 1200px) {
+    #cart_content .breadcrumbs > ul > li {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 990px) {
     #cart_content .breadcrumbs > ul > li {
         padding: 0 10px 0 21px;
         margin-right: 6px;
+        font-size: 12px;
     }
 
     #cart_content .breadcrumbs > ul > li:before {
@@ -129,9 +130,16 @@
     }
 }
 
+@media (max-width: 760px) {
+    #cart_content .breadcrumbs > ul > li {
+        font-size: 11px;
+    }
+}
+
 @media (max-width: 720px) {
     #cart_content .breadcrumbs > ul {
         flex-wrap: wrap;
+        width: auto;
     }
 
     #cart_content .breadcrumbs > ul > li {

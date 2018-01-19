@@ -130,7 +130,7 @@
     }
 }
 
-@media (max-width: 7680px) {
+@media (max-width: 768px) {
     #cart_content .breadcrumbs > ul > li {
         font-size: 11px;
         width: auto;

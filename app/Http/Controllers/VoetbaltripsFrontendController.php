@@ -1721,11 +1721,9 @@ class VoetbaltripsFrontendController extends JoshController
                                     $breadcrumbs.
                                  "</div>".
                                  "<div class='container'>".
-                                 //"<label class='winkel_name_cart'>".Translater::getValue('label-shopping-cart')."</label>".
-                                 "<label class='cart_reserving'>". Translater::getValue('cart-booking') ."</label>".
-                                 "<label class='cart_teams_center'>$for_cart_string</label>".
-                                 "<span class='text-center' id='package_show'>".
-//                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span>".
+                                 "<label class='cart_reserving' style='width:33%'>". Translater::getValue('cart-booking') ."</label>".
+                                 "<label class='cart_teams_center' style='width:33%'>$for_cart_string</label>".
+                                 "<span class='text-center' id='package_show' style='width:33%'>".
                                  "<button class='btn btn-warning' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
                                  "<div class='container cart-package-info'>".
                                     $packageInfo.

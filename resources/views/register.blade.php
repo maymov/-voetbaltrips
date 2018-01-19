@@ -118,6 +118,25 @@
 </head>
 <body>
 
+{{-- getting session user data --}}
+<?php
+
+    $userFirstName = "";
+    $userLastname = "";
+    $userEmail = "";
+
+    if (isset(Session::get('travelinfo')['traveller_first_name'][0])) {
+        $userFirstName = Session::get('travelinfo')['traveller_first_name'][0];
+    }
+
+    if (isset(Session::get('travelinfo')['traveller_last_name'][0])) {
+        $userLastname = Session::get('travelinfo')['traveller_last_name'][0];
+    }
+
+    if (isset(Session::get('travelinfo')['traveller_email'][0])) {
+        $userEmail = Session::get('travelinfo')['traveller_email'][0];
+    }
+?>
 <section id="login">
     <div class="container">
         <div class="row">
@@ -138,17 +157,17 @@
 
                     <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
                         <label class="sr-only"> First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="{{Translater::getValue('form-label-first-name')}}" value="{!! Input::old('first_name') !!}" required>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="{{Translater::getValue('form-label-first-name')}}" value="{!! null !== Input::old('first_name') ? Input::old('first_name') : $userFirstName !!}" required>
                         {!! $errors->first('first_name', '<span class="help-block">:message</span>') !!}
                     </div>
                     <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
                         <label class="sr-only"> Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="{{Translater::getValue('form-label-last-name')}}" value="{!! Input::old('last_name') !!}" required>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="{{Translater::getValue('form-label-last-name')}}" value="{!! null !== Input::old('last_name') ? Input::old('last_name') : $userLastname !!}" required>
                         {!! $errors->first('last_name', '<span class="help-block">:message</span>') !!}
                     </div>
                     <div class="form-group {{ $errors->first('email', 'has-error') }}">
                         <label class="sr-only"> Eemail</label>
-                        <input type="email" class="form-control" id="Email" name="email" placeholder="{{Translater::getValue('form-label-email')}}" value="{!! Input::old('Email') !!}" required>
+                        <input type="email" class="form-control" id="Email" name="email" placeholder="{{Translater::getValue('form-label-email')}}" value="{!! null !== Input::old('Email') ? Input::old('Email') : $userEmail !!}" required>
                         {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                     </div>
                     <div class="form-group {{ $errors->first('password', 'has-error') }}">
@@ -159,7 +178,7 @@
                     <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
                         <label class="sr-only"> {{Translater::getValue('form-label-confirm-password')}}</label>
                         <input type="password" class="form-control" id="Password2" name="password_confirm"
-                               placeholder="Confirm Password">
+                               placeholder="{{Translater::getValue('form-label-password-confirm')}}">
                         {!! $errors->first('password_confirm', '<span class="help-block">:message</span>') !!}
                     </div>
                     <div class="form-group {{ $errors->first('gender', 'has-error') }}">
@@ -174,7 +193,7 @@
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" checked name="subscribed" >  {{Translater::getValue('form-label-i-accept')}} <a href="#"> {{Translater::getValue('footer-terms-and-conditions-label')}}</a>
+                            <input type="checkbox" checked name="subscribed" >  {{Translater::getValue('form-label-i-accept')}} <a href="https://voetbaltrips.com/algemene-voorwaarden" target="_blank"> {{Translater::getValue('footer-terms-and-conditions-label')}}</a>
                         </label>
                     </div>
                     <input type="submit" class="btn btn-block btn-primary" value="{{Translater::getValue('button-sign-up')}}" name="submit">

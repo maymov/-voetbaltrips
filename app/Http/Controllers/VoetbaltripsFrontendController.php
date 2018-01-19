@@ -1653,8 +1653,6 @@ class VoetbaltripsFrontendController extends JoshController
             $total = ($total+$opt_tot);
         }
 
-
-        //really dont know how to make breadcrumbs in this fckn architecture
         $cartClass = $request->className ? $request->className : null;
 
         if (! $request->session()->get('only_ticket') && $cartClass != null) {

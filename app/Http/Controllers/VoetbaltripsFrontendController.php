@@ -1658,12 +1658,24 @@ class VoetbaltripsFrontendController extends JoshController
         if (! $request->session()->get('only_ticket') && $cartClass != null) {
             $breadcrumbs = "<ul>";
             $breads = [];
-            //TODO: rename all with translating like Translater::getValue('label-shopping-cart')
-            //but need to add translations very first
             $breads['cart_match']           = Translater::getValue('cart_match');
             $breads['cart_flightselection'] = Translater::getValue('cart_flightselection');
             $breads['cart_roomselection']   = Translater::getValue('cart_roomselection');
             $breads['cart_extras']          = Translater::getValue('cart_extras');
+            $breads['cart_travellerinfo']   = Translater::getValue('cart_travellerinfo');
+            $breads['cart_cartsummary']     = Translater::getValue('cart_cartsummary');
+            foreach ($breads as $key => $bread) {
+                if ($key == $cartClass) {
+                    $breadcrumbs .= "<li class='active'>$bread</li>";
+                } else {
+                    $breadcrumbs .= "<li>$bread</li>";
+                }
+            }
+            $breadcrumbs .= "</ul>";
+        } elseif ($request->session()->get('only_ticket') && $cartClass != null) {
+            $breadcrumbs = "<ul class='only_tickets'>";
+            $breads = [];
+            $breads['cart_match']           = Translater::getValue('cart_match');
             $breads['cart_travellerinfo']   = Translater::getValue('cart_travellerinfo');
             $breads['cart_cartsummary']     = Translater::getValue('cart_cartsummary');
             foreach ($breads as $key => $bread) {
@@ -1685,15 +1697,16 @@ class VoetbaltripsFrontendController extends JoshController
                 "<span>" . Translater::getValue('cart-return-flight') . ": ".date("H:i", strtotime($cart_data['return_flight']->arrive_time)). " " .date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
             $packageInfo .= "</div>";
         }
-        if ($request->session()->has("cart_room")) {
-                $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
-                $ticketsCategory = $ticketMatched[2];
 
-                $packageInfo .= "<div class='col-sm-4'>" .
-                    "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />" .
-                    "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
-                $packageInfo .= "</div>";
+        $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
+        $ticketsCategory = $ticketMatched[2];
+
+        $packageInfo .= "<div class='col-sm-4'>";
+        $packageInfo .= "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />";
+        if ($request->session()->has('cart_room')) {
+            $packageInfo .= "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
         }
+        $packageInfo .= "</div>";
 
         $subtotalPPP = addAdditionalPrice($subtotal) + ($opt_tot > 0 ? $opt_tot / $cart_data['quantity'] : 0);
 
@@ -1713,7 +1726,7 @@ class VoetbaltripsFrontendController extends JoshController
                                  "<label class='cart_teams_center'>$for_cart_string</label>".
                                  "<span class='text-center' id='package_show'>".
 //                                 "<span class='cart_item'>".$cart_data['quantity']." x &euro;".addAdditionalPrice($subtotal). (($opt_tot>0)?" + &euro;$opt_tot":"")." = &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot). "</span>".
-                                 "<button class='btn btn-success' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
+                                 "<button class='btn btn-warning' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
                                  "<div class='container cart-package-info'>".
                                     $packageInfo.
                                  "</div>";

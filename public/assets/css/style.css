@@ -3,6 +3,8 @@
 */
 .cart-package-info {
     font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cart-package-info .total-price {
@@ -29,7 +31,8 @@
     font-size: 1.55em;
 }
 
-#cart_content .breadcrumbs > ul {
+#cart_content .breadcrumbs > ul,
+.only_tickets > li {
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -42,12 +45,13 @@
     width: 17%;
     padding: 0 10px 0 27px;
     margin-right: 20px;
-    background-color: #d3d3d3;
+    background-color: #4cae4c;
     color: black;
     font-weight: bold;
 }
 
-#cart_content .breadcrumbs > ul > li:before {
+#cart_content .breadcrumbs > ul > li:before,
+.only_tickets > li:before {
     position: absolute;
     display: block;
     content: "";
@@ -58,40 +62,58 @@
     border-top: 13px solid transparent;
 }
 
-#cart_content .breadcrumbs > ul > li:after {
+#cart_content .breadcrumbs > ul > li:after,
+.only_tickets > li:after {
     position: absolute;
     display: block;
     content: "";
     top: 0;
     left: 100%;
-    border-left: 20px solid #d3d3d3;
+    border-left: 20px solid #4cae4c;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
 }
 
-#cart_content .breadcrumbs > ul > li:first-child {
+#cart_content .breadcrumbs > ul > li:first-child,
+.only_tickets > li:first-child {
     padding-left: 15px;
 }
 
-#cart_content .breadcrumbs > ul > li:first-child:before {
+#cart_content .breadcrumbs > ul > li:first-child:before,
+.only_tickets > li:first-child:before {
     border: none;
 }
 
-#cart_content .breadcrumbs > ul > li:last-child:after {
+#cart_content .breadcrumbs > ul > li:last-child:after,
+.only_tickets > li:last-child:after {
     border: none;
 }
 
-#cart_content .breadcrumbs > ul > li.active:last-child:after {
+#cart_content .breadcrumbs > ul > li.active:last-child:after,
+.only_tickets > li.active:last-child:after {
     border: none;
 }
 
-#cart_content .breadcrumbs > ul > li.active:after {
+#cart_content .breadcrumbs > ul > li.active:after,
+.only_tickets > li.active:after {
     border-left: 20px solid orangered;
 }
 
-#cart_content .breadcrumbs > ul > li.active {
+#cart_content .breadcrumbs > ul > li.active,
+.only_tickets > li.active {
     background-color: orangered;
     color: white;
+}
+
+.only_tickets > li {
+    position: relative;
+    height: 26px;
+    width: 33% !important;
+    padding: 0 10px 0 27px;
+    margin-right: 20px;
+    background-color: #4cae4c;
+    color: black;
+    font-weight: bold;
 }
 
 /*Media*/
@@ -117,7 +139,7 @@
 
     #cart_content .breadcrumbs > ul > li:after {
         z-index: 1;
-        border-left: 12px solid #d3d3d3;
+        border-left: 12px solid #4cae4c;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
     }
@@ -133,14 +155,14 @@
 @media (max-width: 768px) {
     #cart_content .breadcrumbs > ul > li {
         font-size: 11px;
-        width: auto;
+        width: auto !important;
     }
 }
 
 @media (max-width: 720px) {
     #cart_content .breadcrumbs > ul {
         flex-wrap: wrap;
-        width: auto;
+        width: auto !important;
     }
 
     #cart_content .breadcrumbs > ul > li {

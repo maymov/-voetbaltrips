@@ -58,18 +58,19 @@
                                         {{ $cart_data['quantity'] }}
                                     </div>
                                 </div>
+                                @if(!empty($cart_data['match_id']))
+                                    <div class="form-group col-sm-12 total-cost" style="margin: 10px"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></div>
+                                @endif
                                 <div class="row">
-                                    <div class="form-group col-sm-12 coupon">
-                                        <label for="value" class="col-sm-2 control-label">{{Translater::getValue('coupon')}}</label>
+                                    <div class="col-sm-2"></div>
+                                    <div class="form-group col-sm-10 coupon">
+                                        <label for="value" class="col-sm-2 control-label" style="padding-left: 0">{{Translater::getValue('coupon')}}</label>
                                         <div class="col-sm-10">
                                             <input id="coupon_code" type="text" placeholder="" class="form-control" value="" />
                                             <input id="coupon_check" type="button" class="btn btn-info " value="{{Translater::getValue('coupon_check')}}" onclick="coupon_check()" />
                                         </div>
                                     </div>
                                 </div>
-                                @if(!empty($cart_data['match_id']))
-                                    <div class="form-group col-sm-12 total-cost" style="margin: 10px"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></div>
-                                @endif
                             </div>
 
                             <div class="col-md-12" style="text-align: center; padding-bottom: 20px;">
@@ -244,10 +245,14 @@
 
                                 @endif
 
+                                @if(!empty($cart_data['match_id']))
+                                    <div class="form-group col-sm-12 total-cost"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></div>
+                                @endif
+
                                 {{-- Coupon section --}}
                                 <div class="row">
                                     <div class="form-group col-sm-12 coupon">
-                                        <label for="value" class="col-sm-2 control-label">{{Translater::getValue('coupon')}}</label>
+                                        <label for="value" class="col-sm-2 control-label" style="padding-left: 0">{{Translater::getValue('coupon')}}</label>
                                         <div class="col-sm-10">
                                             <input id="coupon_code" type="text" placeholder="" class="form-control" value="" />
                                             <input id="coupon_check" type="button" class="btn btn-info " value="{{Translater::getValue('coupon_check')}}" onclick="coupon_check()" />
@@ -255,9 +260,7 @@
                                     </div>
                                 </div>
 
-                                @if(!empty($cart_data['match_id']))
-                                    <div class="form-group col-sm-12 total-cost"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></div>
-                                @endif
+
                             </div>
 
                             <div class="col-md-12 text-center">

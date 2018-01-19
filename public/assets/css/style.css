@@ -45,7 +45,7 @@
     width: 17%;
     padding: 0 10px 0 27px;
     margin-right: 20px;
-    background-color: #4cae4c;
+    background-color: #d3d3d3;
     color: black;
     font-weight: bold;
 }
@@ -69,7 +69,7 @@
     content: "";
     top: 0;
     left: 100%;
-    border-left: 20px solid #4cae4c;
+    border-left: 20px solid #d3d3d3;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
 }
@@ -96,12 +96,12 @@
 
 #cart_content .breadcrumbs > ul > li.active:after,
 .only_tickets > li.active:after {
-    border-left: 20px solid orangered;
+    border-left: 20px solid #4cae4c;
 }
 
 #cart_content .breadcrumbs > ul > li.active,
 .only_tickets > li.active {
-    background-color: orangered;
+    background-color: #4cae4c;
     color: white;
 }
 
@@ -111,7 +111,7 @@
     width: 33% !important;
     padding: 0 10px 0 27px;
     margin-right: 20px;
-    background-color: #4cae4c;
+    background-color: #d3d3d3;
     color: black;
     font-weight: bold;
 }
@@ -139,14 +139,14 @@
 
     #cart_content .breadcrumbs > ul > li:after {
         z-index: 1;
-        border-left: 12px solid #4cae4c;
+        border-left: 12px solid #d3d3d3;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
     }
 
     #cart_content .breadcrumbs > ul > li.active:after {
         z-index: 1;
-        border-left: 12px solid orangered;
+        border-left: 12px solid #4cae4c;
         border-bottom: 13px solid transparent;
         border-top: 13px solid transparent;
     }

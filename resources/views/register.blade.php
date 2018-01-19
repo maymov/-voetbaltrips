@@ -178,7 +178,7 @@
                     <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
                         <label class="sr-only"> {{Translater::getValue('form-label-confirm-password')}}</label>
                         <input type="password" class="form-control" id="Password2" name="password_confirm"
-                               placeholder="{{Translater::getValue('form-label-password-confirm')}}">
+                               placeholder="{{Translater::getValue('form-label-confirm-password')}}">
                         {!! $errors->first('password_confirm', '<span class="help-block">:message</span>') !!}
                     </div>
                     <div class="form-group {{ $errors->first('gender', 'has-error') }}">

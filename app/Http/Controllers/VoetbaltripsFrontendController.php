@@ -1695,10 +1695,12 @@ class VoetbaltripsFrontendController extends JoshController
         $packageInfo = "";
 
         if ($request->session()->has('cart_match')) {
-            $packageInfo .= "<div class='col-sm-3 col-xs-12'>" .
-                "<span><span class='fa fa-futbol-o'></span>" . " " . $cart_data['match_data']['match_team'] . "</span><br />" .
-                "<span><span class='fa fa-clock-o'></span>" . " " . $cart_data['match_data']['match_date'] . "</span>";
-            $packageInfo .= "</div>";
+            if(isset($cart_data['match_data']['match_team'])) {
+                $packageInfo .= "<div class='col-sm-3 col-xs-12'>" .
+                    "<span><span class='fa fa-futbol-o'></span>" . " " . $cart_data['match_data']['match_team'] . "</span><br />" .
+                    "<span><span class='fa fa-clock-o'></span>" . " " . $cart_data['match_data']['match_date'] . "</span>";
+                $packageInfo .= "</div>";
+            }
         }
 
         if ($request->session()->has('cart_flight')) {

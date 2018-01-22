@@ -631,7 +631,9 @@ class VoetbaltripsFrontendController extends JoshController
                 "name"          => $match->getHomeClub->name." - ". $match->getAwayClub->name." (".$ticket->seatingCategory->name." Ticket)",
                 "price"         => addAdditionalPrice($ticket->price),
                 "identifier"    => $ticket->id,
-                "for_cart"      => $match->getHomeClub->name." - ". $match->getAwayClub->name." ".date("d-m-Y", strtotime($match->match_date))
+                "for_cart"      => $match->getHomeClub->name." - ". $match->getAwayClub->name." ".date("d-m-Y", strtotime($match->match_date)),
+                "match_team"    => $match->getHomeClub->name." - ". $match->getAwayClub->name,
+                'match_date'    => date("H:m d/m/Y", strtotime($match->match_date))
             ];
 
             $fl_arr = $request->session()->get("match_pack_$match_id");
@@ -1691,27 +1693,35 @@ class VoetbaltripsFrontendController extends JoshController
         }
 
         $packageInfo = "";
+
+        if ($request->session()->has('cart_match')) {
+            $packageInfo .= "<div class='col-sm-3 col-xs-12'>" .
+                "<span><span class='fa fa-futbol-o'></span>" . " " . $cart_data['match_data']['match_team'] . "</span><br />" .
+                "<span><span class='fa fa-clock-o'></span>" . " " . $cart_data['match_data']['match_date'] . "</span>";
+            $packageInfo .= "</div>";
+        }
+
         if ($request->session()->has('cart_flight')) {
-            $packageInfo .= "<div class='col-sm-4'>" .
-                "<span>" . Translater::getValue('cart-departure-flight') . ": ".date("H:i", strtotime($cart_data['dept_flight']->departure_time)). " " .date("d/m/Y", strtotime($cart_data['dept_flight']->departure_date)). "</span><br />" .
-                "<span>" . Translater::getValue('cart-return-flight') . ": ".date("H:i", strtotime($cart_data['return_flight']->arrive_time)). " " .date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
+            $packageInfo .= "<div class='col-sm-3 col-xs-12'>" .
+                "<span><span class='fa fa-plane rotate-right-plane'></span>" . " ".date("H:i", strtotime($cart_data['dept_flight']->departure_time)). " " .date("d/m/Y", strtotime($cart_data['dept_flight']->departure_date)). "</span><br />" .
+                "<span><span class='fa fa-plane rotate-left-plane'></span>" . " ".date("H:i", strtotime($cart_data['return_flight']->arrive_time)). " " .date("d/m/Y", strtotime($cart_data['return_flight']->arrive_date)). "</span>";
             $packageInfo .= "</div>";
         }
 
         $ticketsCategory = preg_match('/([^\)]+)\((.*)\)/', $cart_data['match_data']['name'], $ticketMatched);
         $ticketsCategory = $ticketMatched[2];
 
-        $packageInfo .= "<div class='col-sm-4'>";
-        $packageInfo .= "<span>" . Translater::getValue('cart-tickets-category') . ": {$ticketsCategory}</span><br />";
+        $packageInfo .= "<div class='col-sm-3 col-xs-12'>";
+        $packageInfo .= "<span><span class='fa fa-ticket rotate-left-plane'></span>" . " {$ticketsCategory}</span><br />";
         if ($request->session()->has('cart_room')) {
-            $packageInfo .= "<span>" . Translater::getValue('cart-hotel-name') . ": {$cart_data['room']['name']}</span>";
+            $packageInfo .= "<span><span class='glyphicon glyphicon-bed'></span>" .  " {$cart_data['room']['name']}</span>";
         }
         $packageInfo .= "</div>";
 
         $subtotalPPP = addAdditionalPrice($subtotal) + ($opt_tot > 0 ? $opt_tot / $cart_data['quantity'] : 0);
 
-        $packageInfo .= "<div class='col-sm-4'>".
-            "<span>".Translater::getValue('cart-ppp').": &euro;".$subtotalPPP."</span><br />".
+        $packageInfo .= "<div class='col-sm-3 col-xs-12'>".
+            "<span> 1 <span class='fa fa-user'></span>" . " x &euro;".$subtotalPPP."</span><br />".
             "<span class='total-price'>".Translater::getValue('cart-total-price').": &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot)."</span>";
         $packageInfo .= "</div>";
 
@@ -1720,12 +1730,12 @@ class VoetbaltripsFrontendController extends JoshController
                                  "<div class='breadcrumbs'>".
                                     $breadcrumbs.
                                  "</div>".
-                                 "<div class='container' style='display: flex; flex-wrap: wrap; justify-content: space-between;'>".
-                                 "<label class='cart_reserving'>". Translater::getValue('cart-booking') ."</label>".
-                                 "<label class='cart_teams_center'>$for_cart_string</label>".
-                                 "<span class='text-center cart_btn' id='package_show'>".
+                                 "<div class='container' style='display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center'>".
+                                 "<div class='cart_reserving'>". Translater::getValue('cart-booking') ."</div>".
+                                 //"<label class='cart_teams_center'>$for_cart_string</label>".
+                                 "<span class='text-center cart_btn' id='package_show' style='width: auto'>".
                                  "<button class='btn btn-warning' id='resetcart'>". Translater::getValue('button-empty-cart') ."</button></span></div>".
-                                 "<div class='container cart-package-info'>".
+                                 "<div class='container cart-package-info' style='text-align: left'>".
                                     $packageInfo.
                                  "</div>";
         }

@@ -5,6 +5,7 @@
     font-weight: bold;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .cart-package-info .total-price {
@@ -13,12 +14,26 @@
 }
 
 .cart_reserving {
-    width:33%;
     color: #0d70b7;
     font-weight: 700;
     font-size: 1.467em;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 15px;
+    margin-right: 25px;
+}
+.rotate-right-plane:before {
+    display: block;
+    transform: rotate(45deg);
+}
+.rotate-left-plane:before {
+    display: block;
+    transform: rotate(-135deg);
+}
+
+.col-sm-3.col-xs-12 .fa,
+.col-sm-3.col-xs-12 .glyphicon {
+    margin-right: 5px;
+    font-size: 18px;
 }
 
 .cart_teams_center {

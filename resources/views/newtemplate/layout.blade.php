@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />    
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Voetbaltrips</title>
 
     <!-- Bootstrap Core CSS -->
@@ -218,7 +218,7 @@ $(document).ready(function(){
                 }
             }
         });
-    });   
+    });
 
     // open main menu
     $('#main_menu').click(function(){
@@ -226,7 +226,7 @@ $(document).ready(function(){
         $('.slicknav_btn').toggleClass('slicknav_btn--close');
     });
 })
-    
+
 </script>
     <script src="{{ asset('assets/newtemplate/js/custom.js') }}" type="text/javascript"></script>
     <script type="text/javascript">

@@ -8,7 +8,7 @@
     *********************************************/
 
     @import asset("assets/css/frontend/bootstrap.min.css");
-    @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+    @import url("//netdna.bootstrapcdn.com/font-awesome/4.3.3/css/font-awesome.css");
 </style>
 @stop
 

@@ -24,13 +24,13 @@
         <div id="cart_content"></div>
     </div>
     <div class="content-wrapper">
-        
+
         <div class="container">
 
             <div style="display: block;" class="row" id="allmatches">
                 <div class="col-md-12">
                     <div class="product-title" style="text-align: center; text-decoration: underline">
-                        
+
                     </div>
                 </div>
                 <div class="container">
@@ -146,7 +146,7 @@
                                     @if($cart_data['coupon_code'] != null)
                                         <span class="form-group col-xs-12 text-right"> <h4>Total (with discount): &euro;{{ $cart_data['total_amount'] }}</h4></span>
                                     @else
-                                        <span class="form-group col-xs-12 text-right"> <h4>Total : &euro;{{ $cart_data['total_amount'] }}</h4></span>
+                                        <span class="form-group col-xs-12 text-right"> <h4>{{ Translater::getValue('label-total') }} : &euro;{{ $cart_data['total_amount'] }}</h4></span>
                                     @endif
                                 @endif
                             </div>
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 text-center"  style="text-align: center; padding-bottom: 20px;">
                 <a href="{!! url("cart/summary") !!}" class="btn btn-primary btn-lg">{{Translater::getValue('button-go-back')}}</a>&nbsp;
                 <a href="{!! url("cart/confirmorder") !!}" class="btn btn-success btn-lg">{{Translater::getValue('button-proceed-to-payment')}}</a>

@@ -141,6 +141,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+
+                <div class="alert alert-info">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Info!</strong> This alert box indicates a neutral informative change or action.
+                </div>
+
                 <div class="form-wrap">
                 {{--<img src="{{ asset('assets/images/josh-new.png') }}" alt="logo" class="img-responsive mar">--}}
                 <h1 class="text-primary">{{ucfirst(Translater::getValue('label-register-small'))}}</h1><a id="header-languager" class="header-languager">{{\Illuminate\Support\Facades\Session::get('lang_code')}}</a>

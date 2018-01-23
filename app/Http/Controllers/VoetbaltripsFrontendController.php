@@ -1725,7 +1725,7 @@ class VoetbaltripsFrontendController extends JoshController
         $subtotalPPP = addAdditionalPrice($subtotal) + ($opt_tot > 0 ? $opt_tot / $cart_data['quantity'] : 0);
 
         $packageInfo .= "<div class='col-sm-3 col-xs-12'>".
-            "<span> 1 <span class='fa fa-user'></span>" . " x &euro;".$subtotalPPP."</span><br />".
+            "<span> {$cart_data['quantity']} <span class='fa fa-user'></span>" . " x &euro;".$subtotalPPP."</span><br />".
             "<span class='total-price'>".Translater::getValue('cart-total-price').": &euro;".(($cart_data['quantity']*$subtotal)+$opt_tot)."</span>";
         $packageInfo .= "</div>";
 

@@ -749,7 +749,9 @@ class VoetbaltripsFrontendController extends JoshController
             "name"       => $match->getHomeClub->name." - ". $match->getAwayClub->name." (".$ticket_price->seatingCategory->name." Ticket)",
             "price"      => addAdditionalPrice($ticket_price->price),
             "identifier" => $request->input("ticket"),
-            "for_cart"      => $match->getHomeClub->name." - ". $match->getAwayClub->name." ".date("d-m-Y", strtotime($match->match_date))
+            "for_cart"      => $match->getHomeClub->name." - ". $match->getAwayClub->name." ".date("d-m-Y", strtotime($match->match_date)),
+            "match_team"    => $match->getHomeClub->name." - ". $match->getAwayClub->name,
+            'match_date'    => date("H:m d/m/Y", strtotime($match->match_date))
         ];
 
         $request->session()->set("match_data", $match_array);

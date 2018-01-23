@@ -21,6 +21,7 @@
     <link href="{{ asset('assets/voetbaltrips_frontend/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito%3A400normal%2C700normal&ver=4.7.5" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.CSS">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.loadingModal.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/css/lobibox.min.css') }}" type="text/css">
 
@@ -62,7 +63,6 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">{{Translater::getValue('label-no')}}</button>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="modal fade" id="myModal2" role="dialog">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="header__content-wrap">
-                        <div class="row">
+                        <div class="row content-list">
                             <div class="col-md-12 header__content">
                                 <div class="slicknav_menu">
                                     <a href="#" aria-haspopup="true" tabindex="0" class="slicknav_btn" id="main_menu" style="outline: none;"><span class="slicknav_menutxt"></span><span    class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"    ></span></span>
@@ -128,6 +128,8 @@
                                             </li>
                                             <li><a class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item" href="{{ URL::to('register') }}">{{Translater::getValue('label-register-small')}}</a>
                                             </li>
+<!--                                            <li class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></li>-->
+                                           
                                         @else
                                             <li class="dropdown {!! (Request::is('my-account') || Request::is('my-orders') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{Translater::getValue('label-my-account-small')}} <span class="caret"></span></a>
                                                 <ul class="dropdown-menu" role="menu">
@@ -135,6 +137,7 @@
                                                     </li>
                                                     <li><a href="{{ URL::to('my-orders') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-my-orders')}}</a>
                                                     </li>
+                                                    
                                                 </ul>
                                             </li>
                                             <li><a href="{{ URL::to('logout') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-logout-small')}}</a>
@@ -145,9 +148,14 @@
                                             <a class="top-cart-price"></a>
                                         </li> -->
                                     </ul>
+                                    
+                                    
                                 </nav>
                                 <div class="clearfix"></div>
                             </div>
+                        </div>
+                        <div class="row content-call">
+                             <div class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></div>
                         </div>
                     </div>
                 </div>
@@ -182,7 +190,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('assets/voetbaltrips_frontend/js/jquery.js') }}"></script>
-
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('assets/voetbaltrips_frontend/js/bootstrap.min.js') }}"></script>
 <script src="{{asset('assets/js/jquery.loadingModal.min.js')}}" type="text/javascript"></script>

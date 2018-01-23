@@ -1,21 +1,21 @@
 /*footer to bottom*/
 html {
-  height: 100%;
-  box-sizing: border-box;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 body{
-	position: relative;
-	padding-bottom: 200px;
-	min-height: 100%;
-	height: initial;
+    position: relative;
+    padding-bottom: 200px;
+    min-height: 100%;
+    height: initial;
 }
 
 .footer{
-	position: absolute;
-	width: 100%;
-	left: 0;
-	bottom: 0;	
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;	
 }
 
 
@@ -56,37 +56,11 @@ header {
 }
 
 .header__info {
-    overflow: hidden;
-    position: relative;
+    display:none;
+  
 }
 
-.header__info::before {
-    content: " ";
-    display: block;
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: #fff none repeat scroll 0 0;
-    opacity: 0.1;
-}
 
-.header__info__items-left {
-    float: left;
-}
-
-.header__info__items-right {
-    float: right;
-}
-
-.header__info__item {
-    display: inline-block;
-    font-size: 0.933em;
-    line-height: 35px;
-    margin: 5px 0;
-    padding-left: 1px;
-}
 
 .winkel_name_cart {
     float: left;
@@ -135,18 +109,61 @@ header {
     margin: 0;
     padding: 0;
     list-style: none;
+    padding-left: 437px;
+    
 }
 
 .main-nav-header {
     float: right;
 }
 
-.main-nav > li {
+.main-nav >li {
     display: inline-block;
     margin-right: 30px;
     position: relative;
     text-transform: uppercase;
 }
+.content-list{
+    float:left;
+}
+.content-call{
+    float:right;
+
+}
+.content-call .phone{
+    padding-left: 35px;
+    margin-right: 0;
+    margin-top: 20px;
+    padding-right: 27px;
+}
+.content-call .phone .call-to{
+    background: #a0c479 url(../../images/phoneicon25.png);
+    /* height: 50px; */
+    border-width: 0;
+    border-radius: 5px;
+    line-height: 9px;
+    height: 57px;
+    background-repeat: no-repeat;
+    width: 105%;
+    background-position: 7px 15px;
+    background-size: 25px;
+
+}
+.content-call .phone .call-to .bel-ons{
+    font-size: 18px;
+    padding-left: 26px;
+    padding-bottom: 15px;
+    line-height: 1px;
+    padding-top: 1px;
+}
+.content-call .phone .call-to .tussen{
+    padding-left: 61px;
+    font-size:13px;
+
+}
+
+
+
 
 .main-nav a {
     color: #fff;
@@ -262,74 +279,74 @@ header {
 }
 
 #nav-icon3 {
-  position: relative;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  cursor: pointer;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
 }
 
 #nav-icon3 span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 30px;
-  background: #c12c8a;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 30px;
+    background: #c12c8a;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
 }
 
 
 #nav-icon3 span:nth-child(1) {
-  top: 0px;
+    top: 0px;
 }
 
 #nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {
-  top: 10px;
+    top: 10px;
 }
 
 #nav-icon3 span:nth-child(4) {
-  top: 20px;
+    top: 20px;
 }
 
 #nav-icon3.open span:nth-child(1) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
+    top: 18px;
+    width: 0%;
+    left: 50%;
 }
 
 #nav-icon3.open span:nth-child(2) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 #nav-icon3.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 #nav-icon3.open span:nth-child(4) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
+    top: 18px;
+    width: 0%;
+    left: 50%;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -350,7 +367,7 @@ header {
         padding: 10px;
     }
     .product-description {
-      //  width: 960px;
+        //  width: 960px;
         padding-top: 10px;
     }
 } 
@@ -359,7 +376,7 @@ header {
         line-height: 65px;
     }
     .product-description {
-       // width: 600px;
+        // width: 600px;
         padding-top: 10px;
     }
     .quantity{
@@ -474,25 +491,25 @@ header {
     color: #fff;
 }
 @media (max-width: 991px) {
-.footer__widgets-areas > div {
-    margin-bottom: 40px;
-}
+    .footer__widgets-areas > div {
+        margin-bottom: 40px;
+    }
 
-.footer__widgets-areas > div:last-child {
-    margin-bottom: 0;
-}
-.footer__bottom {
-    padding-top: 30px;
-    text-align: center;
-}
-.footer .footer-nav > .menu {
-    text-align: center;
-}
+    .footer__widgets-areas > div:last-child {
+        margin-bottom: 0;
+    }
+    .footer__bottom {
+        padding-top: 30px;
+        text-align: center;
+    }
+    .footer .footer-nav > .menu {
+        text-align: center;
+    }
 }
 @media (max-width: 991px) and (max-width: 767px) {
-.footer__widgets-areas > div {
-    margin-bottom: 30px;
-}
+    .footer__widgets-areas > div {
+        margin-bottom: 30px;
+    }
 }
 .footer .widget__title {
     color: #fff;
@@ -796,7 +813,7 @@ h4{
 }
 
 #outgoing_Data .product-title, #to_data .product-title{
-	padding-left: 10px;
+    padding-left: 10px;
 }
 
 
@@ -889,7 +906,7 @@ input[type="radio"]{
 }
 
 .checkout-page  .form-group {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .checkout-page .total-cost {
@@ -912,7 +929,7 @@ input[type="radio"]{
 }
 
 .flight-blade #frmflightdetails {
-	display: inline-block;
+    display: inline-block;
     width: 100%;
     margin-top: 20px;
 }
@@ -926,7 +943,7 @@ input[type="radio"]{
 }
 
 #earl_day_return, #latt_day_return{
-	min-width: 100px;
+    min-width: 100px;
 }
 
 .quantity button{
@@ -978,14 +995,14 @@ input[type="radio"]{
         display: inline-block;
         width: 100%;
     }
- 
+
     .checkout-page .total-cost {
         text-align: center;
     }
 
     .checkout-page .label-title{
-	    margin-bottom: 0px !important;
-	}
+        margin-bottom: 0px !important;
+    }
 
 }
 
@@ -1001,7 +1018,7 @@ input[type="radio"]{
         height: 100%;
     }
     .product-description {
-       // width: 600px;
+        // width: 600px;
         padding-top: 10px;
     }
 }
@@ -1060,7 +1077,7 @@ input[type="radio"]{
     }
 
     .product-description {
-      //  width: 400px;
+        //  width: 400px;
         padding-top: 10px;
     }
 
@@ -1223,11 +1240,11 @@ input[type="radio"]{
     .extra-options .form-group.text-right {
         text-align: center;
     }
-    
+
     .extra-options h3{
         text-align: center;
     }
-    
+
     .quantity button{
         float:none;
         margin: 0 auto;
@@ -1240,7 +1257,7 @@ input[type="radio"]{
         width: 100%;
     }
 
-   .next-prev a, .next-prev button{
+    .next-prev a, .next-prev button{
         float:none;
     }
 
@@ -1248,7 +1265,7 @@ input[type="radio"]{
 
 @media (max-width: 375px) {
     .product-description {
-      display: none;
+        display: none;
     }
     .extra-options .form-group.text-right a, .tr1-info .form-group.text-center a, .tr1-info .form-group.text-center button, .quantity button,  .next-prev a, .next-prev button {
         width: 100%;

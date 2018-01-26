@@ -13,12 +13,15 @@
     }
     .form-group .dd-option{
         height: 46px;
-        padding: 0;
+        padding: 5px;
     }
     #match-bars{
         margin:0 auto;
         float:none;
 
+    }
+    .change-line-height {
+        line-height: 38px !important;
     }
     #allmatcheslist li:nth-child(n+11){
         display:none;

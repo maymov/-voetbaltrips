@@ -359,7 +359,7 @@
         </div>
         <div class="row">
             <div class="load-more">
-            <button class="btn btn-primary" id="load-btn" data-offset="2">LOAD MORE</button>
+            <button class="btn btn-primary" id="load-btn" data-offset="2">{{Translater::getValue('button-load-more')}}</button>
             </div>
         </div>
     </div>

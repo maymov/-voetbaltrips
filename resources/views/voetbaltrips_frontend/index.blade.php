@@ -18,13 +18,13 @@
     #match-bars{
         margin:0 auto;
         float:none;
-        
+
     }
     #allmatcheslist li:nth-child(n+11){
         display:none;
     }
     .load-more{
-        text-align: center;        
+        text-align: center;
     }
     .load-more #load-btn{
         width: 35%;
@@ -297,23 +297,23 @@
             <input type="hidden" name="sorttype" id="sorttype" />
             <input type="hidden" name="sortorder" id="sortorder" />
 
-            <span class="form-group col-lg-4 col-md-4 col-sm-4">
+            <span class="form-group col-lg-6 col-md-6 col-sm-6">
                 <div class="input-group ">
-                    <div name="tournament" id="tournament" class="form-control input-lg col-xs-4">
+                    <div name="tournament" id="tournament" class="form-control input-lg col-xs-6">
                     </div>
                     <span style="cursor:pointer;" id="removeTournament" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 </div>
             </span>
-            <span class="form-group col-lg-4 col-md-4 col-sm-4">
+            {{--<span class="form-group col-lg-4 col-md-4 col-sm-4">--}}
+                {{--<div class="input-group ">--}}
+                    {{--<div name="city" id="city" class="form-control input-lg col-xs-4">--}}
+                    {{--</div>--}}
+                    {{--<span style="cursor:pointer;" id="removeCity" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>--}}
+                {{--</div>--}}
+            {{--</span>--}}
+            <span class="form-group col-lg-6 col-md-6 col-sm-6">
                 <div class="input-group ">
-                    <div name="city" id="city" class="form-control input-lg col-xs-4">
-                    </div>
-                    <span style="cursor:pointer;" id="removeCity" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                </div>
-            </span>
-            <span class="form-group col-lg-4 col-md-4 col-sm-4">
-                <div class="input-group ">
-                    <div name="club" id="club" class="form-control input-lg col-xs-4">
+                    <div name="club" id="club" class="form-control input-lg col-xs-6">
                     </div>
                     <span style="cursor:pointer;" id="removeClub" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 </div>

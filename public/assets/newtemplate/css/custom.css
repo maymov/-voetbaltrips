@@ -144,7 +144,7 @@ header {
     line-height: 9px;
     height: 57px;
     background-repeat: no-repeat;
-    width: 105%;
+    width: 100%;
     background-position: 7px 15px;
     background-size: 25px;
 
@@ -1271,8 +1271,19 @@ input[type="radio"]{
         width: 100%;
     }
 
-
-
+}
+@media (max-width: 480px) {
+    .content-call {
+        float: none;
+    }
+    .content-call .phone {
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 15px;
+    }
+    .content-list {
+        float: none;
+    }
 }
 
 

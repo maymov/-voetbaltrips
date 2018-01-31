@@ -92,8 +92,8 @@
 </div>
 
 
-<div class="header-wrap">
-    <div class="header-wrap__backlog" style="min-height: 95px; margin-top: 45px;"></div>
+{{--<div class="header-wrap">--}}
+    {{--<div class="header-wrap__backlog" style="min-height: 95px; margin-top: 45px;"></div>--}}
     {{--<header>--}}
         {{--<!-- Icon Section Start -->--}}
         {{--<div class="container">--}}
@@ -160,7 +160,7 @@
             {{--</div>--}}
         {{--</div>--}}
     {{--</header>--}}
-</div>
+{{--</div>--}}
 @yield('content')
 
 <div id="load_popup_modal_show_id" class="modal fade" tabindex="-1"></div>

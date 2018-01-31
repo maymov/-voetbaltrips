@@ -94,72 +94,72 @@
 
 <div class="header-wrap">
     <div class="header-wrap__backlog" style="min-height: 95px; margin-top: 45px;"></div>
-    <header>
-        <!-- Icon Section Start -->
-        <div class="container">
-            <div class="header__info">
-                <div class="header__info__items-left">
-                    <div class="header__info__item header__info__item--phone"><i class="fa fa-phone"></i>030-3690059</div>
-                    <div class="header__info__item header__info__item--clock"><i class="fa fa-clock-o"></i>9:00 - 17:00</div>
-                </div>
-                <div class="header__info__items-right">
-                    <div class="header__info__item header__info__item--delimiter header__info__item--social-icons"><a href="http://facebook.com/voetbaltrips"><i class="fa fa-facebook"></i></a></div>
-                    <div class="header__info__item header__info__item--delimiter header__info__item--search"><a data-effect="mfp-zoom-in" class="popup-search-form" href="#search-form-header"><i class="fa fa-search"></i></a></div>
-                    <div class="header__info__item header__info__item--delimiter header__info__item--language"><a id="header-languager" class="header-languager">{{\Illuminate\Support\Facades\Session::get('lang_code')}}</a></div>
-                </div>
-            </div>
-            <div class="header__content-wrap">
-                <div class="row content-list">
-                    <div class="col-md-12 header__content">
-                        <div class="slicknav_menu">
-                            <a href="#" aria-haspopup="true" tabindex="0" class="slicknav_btn" id="main_menu" style="outline: none;"><span class="slicknav_menutxt"></span><span    class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"    ></span></span>
-                            </a>
-                        </div>
-                        <div class="logo logo--image">
-                            <a id="logoLink" href="/@if(isset($home)){{$home}}@endif" >
-                                <img id="normalImageLogo" src="{{asset('assets/newtemplate/images/logo.png')}}" alt="Voetbaltrips.com" title="Uw voetbalreis voor een sportieve prijs!">
-                            </a>
-                        </div>
-                        <nav class="main-nav-header" role="navigation">
-                            <ul id="navigation" class="main-nav">
+    {{--<header>--}}
+        {{--<!-- Icon Section Start -->--}}
+        {{--<div class="container">--}}
+            {{--<div class="header__info">--}}
+                {{--<div class="header__info__items-left">--}}
+                    {{--<div class="header__info__item header__info__item--phone"><i class="fa fa-phone"></i>030-3690059</div>--}}
+                    {{--<div class="header__info__item header__info__item--clock"><i class="fa fa-clock-o"></i>9:00 - 17:00</div>--}}
+                {{--</div>--}}
+                {{--<div class="header__info__items-right">--}}
+                    {{--<div class="header__info__item header__info__item--delimiter header__info__item--social-icons"><a href="http://facebook.com/voetbaltrips"><i class="fa fa-facebook"></i></a></div>--}}
+                    {{--<div class="header__info__item header__info__item--delimiter header__info__item--search"><a data-effect="mfp-zoom-in" class="popup-search-form" href="#search-form-header"><i class="fa fa-search"></i></a></div>--}}
+                    {{--<div class="header__info__item header__info__item--delimiter header__info__item--language"><a id="header-languager" class="header-languager">{{\Illuminate\Support\Facades\Session::get('lang_code')}}</a></div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="header__content-wrap">--}}
+                {{--<div class="row content-list">--}}
+                    {{--<div class="col-md-12 header__content">--}}
+                        {{--<div class="slicknav_menu">--}}
+                            {{--<a href="#" aria-haspopup="true" tabindex="0" class="slicknav_btn" id="main_menu" style="outline: none;"><span class="slicknav_menutxt"></span><span    class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"    ></span></span>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="logo logo--image">--}}
+                            {{--<a id="logoLink" href="/@if(isset($home)){{$home}}@endif" >--}}
+                                {{--<img id="normalImageLogo" src="{{asset('assets/newtemplate/images/logo.png')}}" alt="Voetbaltrips.com" title="Uw voetbalreis voor een sportieve prijs!">--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<nav class="main-nav-header" role="navigation">--}}
+                            {{--<ul id="navigation" class="main-nav">--}}
                                 {{--based on anyone login or not display menu items--}}
-                                @if(Sentinel::guest())
-                                    <li><a class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item" href="{{ URL::to('login') }}">{{Translater::getValue('label-login-small')}}</a>
-                                    </li>
-                                    <li><a class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item" href="{{ URL::to('register') }}">{{Translater::getValue('label-register-small')}}</a>
-                                    </li>
-                                    <!--                                            <li class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></li>-->
+                                {{--@if(Sentinel::guest())--}}
+                                    {{--<li><a class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item" href="{{ URL::to('login') }}">{{Translater::getValue('label-login-small')}}</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item" href="{{ URL::to('register') }}">{{Translater::getValue('label-register-small')}}</a>--}}
+                                    {{--</li>--}}
+                                    {{--<!--                                            <li class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></li>-->--}}
 
-                                @else
-                                    <li class="dropdown {!! (Request::is('my-account') || Request::is('my-orders') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{Translater::getValue('label-my-account-small')}} <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="{{ URL::to('my-account') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-my-account-small')}}</a>
-                                            </li>
-                                            <li><a href="{{ URL::to('my-orders') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-my-orders')}}</a>
-                                            </li>
+                                {{--@else--}}
+                                    {{--<li class="dropdown {!! (Request::is('my-account') || Request::is('my-orders') ? 'active' : '') !!}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{Translater::getValue('label-my-account-small')}} <span class="caret"></span></a>--}}
+                                        {{--<ul class="dropdown-menu" role="menu">--}}
+                                            {{--<li><a href="{{ URL::to('my-account') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-my-account-small')}}</a>--}}
+                                            {{--</li>--}}
+                                            {{--<li><a href="{{ URL::to('my-orders') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-my-orders')}}</a>--}}
+                                            {{--</li>--}}
 
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{ URL::to('logout') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-logout-small')}}</a>
-                                    </li>
-                            @endif
+                                        {{--</ul>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="{{ URL::to('logout') }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">{{Translater::getValue('label-logout-small')}}</a>--}}
+                                    {{--</li>--}}
+                            {{--@endif--}}
                             {{--<li><h1> <span style="cursor: pointer;" class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge top-cart-price"></span></span></h1></li>--}}
-                            <!--                                         <li>
-                                            <a class="top-cart-price"></a>
-                                        </li> -->
-                            </ul>
+                            {{--<!--                                         <li>--}}
+                                            {{--<a class="top-cart-price"></a>--}}
+                                        {{--</li> -->--}}
+                            {{--</ul>--}}
 
 
-                        </nav>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="row content-call">
-                    <div class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></div>
-                </div>
-            </div>
-        </div>
-    </header>
+                        {{--</nav>--}}
+                        {{--<div class="clearfix"></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row content-call">--}}
+                    {{--<div class="phone"><button class="call-to"><div class="bel-ons">Bel ons: 030 - 3690059</div><div class="tussen">TUSSEN 9.00 - 17.00 UUR</div></button></div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</header>--}}
 </div>
 @yield('content')
 
@@ -168,25 +168,25 @@
 
 <!-- new footer -->
 
-<footer class="footer navbar-fixed-bottom">
-    <div class="footer__bottom">
-        <div class="footer__arrow-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="footer__copyright">© Voetbaltrips.com 2017 {{Translater::getValue('footer-rights-label')}}</div>
-                </div>
-                <div class="col-md-6">
-                    <div class="footer-nav">
-                        <ul id="menu-footer-menu" class="menu"><li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1226"><a href="https://voetbaltrips.com/algemene-voorwaarden">{{Translater::getValue('footer-terms-and-conditions-label')}}</a></li>
-                            <li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1227"><a href="https://voetbaltrips.com/privacy-cookies">Privacy &amp; Cookies</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+{{--<footer class="footer navbar-fixed-bottom">--}}
+    {{--<div class="footer__bottom">--}}
+        {{--<div class="footer__arrow-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-6">--}}
+                    {{--<div class="footer__copyright">© Voetbaltrips.com 2017 {{Translater::getValue('footer-rights-label')}}</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-6">--}}
+                    {{--<div class="footer-nav">--}}
+                        {{--<ul id="menu-footer-menu" class="menu"><li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1226"><a href="https://voetbaltrips.com/algemene-voorwaarden">{{Translater::getValue('footer-terms-and-conditions-label')}}</a></li>--}}
+                            {{--<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1227"><a href="https://voetbaltrips.com/privacy-cookies">Privacy &amp; Cookies</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</footer>--}}
 
 <!-- jQuery -->
 <script src="{{ asset('assets/voetbaltrips_frontend/js/jquery.js') }}"></script>

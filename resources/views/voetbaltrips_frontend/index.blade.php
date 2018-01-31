@@ -1,4 +1,4 @@
-@extends('newtemplate/layout')
+@extends('newtemplate/layout-main-page')
 
 @section('header_styles')
 <style>

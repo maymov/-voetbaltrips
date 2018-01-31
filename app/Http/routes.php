@@ -306,3 +306,6 @@ Route::post("addticket/{match_id}", ["uses"=>"TicketOnlySaleController@buyTicket
 
 # End of frontend views
 
+# Iframe views
+
+Route::get('/iframe', ['as' => 'iframe', 'uses' => 'VoetbaltripsFrontendController@getIndex']);

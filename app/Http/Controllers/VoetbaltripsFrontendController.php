@@ -108,7 +108,13 @@ class VoetbaltripsFrontendController extends JoshController
             $matchId = $request->input("match");
         }
 
-        return View::make('voetbaltrips_frontend.index', compact('clubId', 'club', 'city', 'tournaments', 'cityId', 'city_uri', 'club_uri', 'tournamentId','tournament_uri', 'matches', 'ajaxload_match', 'matchId'));
+        $viewName = "index";
+
+        if ($request->segment(1) == "iframe") {
+            $viewName = "iframe";
+        }
+
+        return View::make("voetbaltrips_frontend.{$viewName}", compact('clubId', 'club', 'city', 'tournaments', 'cityId', 'city_uri', 'club_uri', 'tournamentId','tournament_uri', 'matches', 'ajaxload_match', 'matchId'));
     }
 
     /**

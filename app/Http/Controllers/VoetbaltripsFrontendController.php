@@ -806,9 +806,9 @@ class VoetbaltripsFrontendController extends JoshController
 
     public function flightSelection($match_id, Request $request)
     {
-        if (!$request->session()->has("cart_match")) {
+/*        if (!$request->session()->has("cart_match")) {
             return redirect(url());
-        }
+        }*/
         $match      = Match::findorFail($match_id);
         $test       = Airportlist::where('city_id', $match->getStadium->cities->id)->lists('id');
         $air        = Flight::where("flightmode", 1)->whereIn("to", $test)->groupBy("from")->lists('from');

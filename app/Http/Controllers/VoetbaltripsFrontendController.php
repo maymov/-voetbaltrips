@@ -689,6 +689,8 @@ class VoetbaltripsFrontendController extends JoshController
             $response['status']  = "success";
             $response['message'] = "Package has been added to cart.";
         }
+
+        $response['session'] = Session::all();
         return response()->json($response);
     }
 

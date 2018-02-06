@@ -603,6 +603,7 @@ class VoetbaltripsFrontendController extends JoshController
             $resp['matches']['status']  = "empty";
             $resp['matches']['message'] = Translater::getValue('message-no-matches-found');
         }
+        $resp['session'] = Session::all();
         return response()->json($resp);
     }
     /**

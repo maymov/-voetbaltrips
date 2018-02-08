@@ -12,7 +12,6 @@ $(document).ready(function () {
         error: function () {
             $('body').loadingModal('destroy');
         },
-        async: false,
         success: function (resp) {
 
             if (resp.matches.length > 0) {

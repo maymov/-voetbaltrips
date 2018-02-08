@@ -1,6 +1,9 @@
 $(document).ready(function () {
     var city, tournament, club, matchId, formdata, loadclubs, loadcities = '0';
-    
+
+    matchId = $('#matchId').val();
+
+    if (club == 0 && city == 0 && tournament == 0 && matchId == 0) {
     $.ajax({
         url: "ajax/matches",
         method: "POST",
@@ -132,10 +135,7 @@ $("#allmatcheslist").html(match);
                     $('body').loadingModal('destroy');
                 }
             });
-
-
-
-matchId = $('#matchId').val();
+    }
 
 var ddDataC, ddDataCi, ddDataT = [];
 

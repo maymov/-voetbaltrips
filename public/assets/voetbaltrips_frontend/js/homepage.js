@@ -1,9 +1,6 @@
 $(document).ready(function () {
     var city, tournament, club, matchId, formdata, loadclubs, loadcities = '0';
 
-    matchId = $('#matchId').val();
-
-    if (club == 0 && city == 0 && tournament == 0 && matchId == 0) {
     $.ajax({
         url: "ajax/matches",
         method: "POST",
@@ -15,6 +12,7 @@ $(document).ready(function () {
         error: function () {
             $('body').loadingModal('destroy');
         },
+        async: false,
         success: function (resp) {
 
             if (resp.matches.length > 0) {
@@ -135,7 +133,10 @@ $("#allmatcheslist").html(match);
                     $('body').loadingModal('destroy');
                 }
             });
-    }
+
+
+
+matchId = $('#matchId').val();
 
 var ddDataC, ddDataCi, ddDataT = [];
 
@@ -370,6 +371,7 @@ window.getMatches = function () {
             method: "POST",
             dataType: "json",
             data: formdata,
+            async: false,
             beforeSend: function () {
                 $('body').loadingModal({text: 'Please Wait...'});
             },
